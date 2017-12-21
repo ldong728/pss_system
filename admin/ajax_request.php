@@ -166,6 +166,14 @@ function customer_list($data){
     $back=getList('customer_tbl','customer_tbl',$data);
     echo ajaxBack($back);
 }
+function customer_detail($data){
+    $back=pdoQueryNew('customer_tbl',null,$data,'limit 1')->fetch();
+    if($back){
+        echo ajaxBack($back);
+    }else{
+        echo ajaxBack(null,12,'无记录');
+    }
+}
 
 
 

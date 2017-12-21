@@ -16,14 +16,22 @@
         left: 15%;
         top: 15%;
         width: 70%;
-        height: 70%;
-        overflow-y: scroll;
-        padding-left: 5px;
-    }
-    .pop-up .table{
+        height: 80%;
 
     }
-    .pop-up .button{
+    .pop-up .table-container{
+        box-sizing: border-box;
+        overflow-y: scroll;
+        padding-left: 5px;
+        height: 90%;
+    }
+    .pop-up .button-container{
+        box-sizing: border-box;
+        text-align: center;
+        height: 90%;
+    }
+
+    .pop-up .search-button{
         min-height: 20px;
         height: 23px;
         margin-left: 4px;;
@@ -36,13 +44,13 @@
     <table class="table order-inf">
         <tr>
             <td>选择客户：<span class="customer-container"></span></td>
-            <td><input type="text" class="customer-input" data-field="customer_name" placeholder="输入姓名"> </td>
-            <td><input type="tel" class="customer-input" data-field="customer_tel" placeholder="输入电话"> </td>
+            <td><input type="text" class="customer-input" data-field="customer_name" placeholder="输入姓名"><span class="tips"></span> </td>
+            <td><input type="tel" class="customer-input" data-field="customer_tel" placeholder="输入电话"> <span class="tips"></span></td>
 
         </tr>
         <tr>
             <td></td>
-            <td colspan="2"><input type="text" class="customer-input" data-field="customer_address" placeholder="输入地址" style="max-width: 500px;width: 250px"> </td>
+            <td colspan="2"><input type="text" class="customer-input" data-field="customer_address" placeholder="输入地址" style="max-width: 500px;width: 250px"> <span class="tips"></span></td>
         </tr>
     </table>
     <div class="head">
@@ -77,41 +85,47 @@
 
 
 <div class="pop-up">
-    <div class="head">
-        待选列表
-    </div>
-    <table class="table">
-        <tr>
-            <td>选择类别：</td><td colspan="3" class="category-filter"><select class="category-template category-select"><option class="option-template"></option></select></td>
-        </tr>
-        <tr>
-            <td>按名称搜索:</td><td><input class="name-search-text search-input" type="text" placeholder="输入名称" maxlengtd="10"><button class="button search-button" data-type="search-name" id="sch1">搜索</button></td>
-            <td>按序列号搜索:</td><td><input class="sn-search-text search-input" type="text" placeholder="输入序列号" maxlengtd="10"><button class="button search-button" data-type="search-sn" id="sch1">搜索</button></td>
-        </tr>
-    </table>
-    <table class="table sheet prepare-table" style="display: none">
-        <tr>
-            <td>名称</td>
-            <td>序列号</td>
-            <td>库存</td>
-            <td>操作</td>
+    <div class="table-container">
+        <div class="head">
+            待选列表
+        </div>
+        <table class="table">
+            <tr>
+                <td>选择类别：</td><td colspan="3" class="category-filter"><select class="category-template category-select"><option class="option-template"></option></select></td>
+            </tr>
+            <tr>
+                <td>按名称搜索:</td><td><input class="name-search-text search-input" type="text" placeholder="输入名称" maxlengtd="10"><button class="button search-button" data-type="search-name" id="sch1">搜索</button></td>
+                <td>按序列号搜索:</td><td><input class="sn-search-text search-input" type="text" placeholder="输入序列号" maxlengtd="10"><button class="button search-button" data-type="search-sn" id="sch1">搜索</button></td>
+            </tr>
+        </table>
+        <table class="table sheet prepare-table" style="display: none">
+            <tr>
+                <td>名称</td>
+                <td>序列号</td>
+                <td>库存</td>
+                <td>操作</td>
 
-        </tr>
-        <tr class="prepare-tr-template">
-            <td class="content" data-field="name"></td>
-            <td class="content" data-field="sn"></td>
-            <td class="content" data-field="stock"></td>
-            <td>
-                <button class="button add" data-type="add">添加</button>
-            </td>
-        </tr>
-    </table>
+            </tr>
+            <tr class="prepare-tr-template">
+                <td class="content" data-field="name"></td>
+                <td class="content" data-field="sn"></td>
+                <td class="content" data-field="stock"></td>
+                <td>
+                    <button class="button add" data-type="add">添加</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="button-container">
+        <button class="button" data-type="close-popup">关闭</button>
+    </div>
+
 </div>
 
 
 <script type="application/javascript" src="js/tableController.js"></script>
 <script>
-var categoryList,preOrderObj,prepareList;
+var preOrderObj,prepareList;
 var prepareElementsTemplate,categoryDisplayElementsTemplate,preOrderElementTemplate;
 $(document).ready(function(){
     preOrderObj={customer:null,total_price:null,detail:{}};
@@ -163,21 +177,16 @@ function registEvent(){
                     TableController.getList(handlePrepareTableContent);
                 }
                 break;
-            case 'number-button':
-
-                if($(this).hasClass('minus')){
-
-                }else{
-
-                }
-                break;
-            case 'submit':
+                       case 'submit':
                 $('order-number').each(function(k,v){
                     var id= $(v).attr('id').slice(3);
                     var number=parseInt($(v).val());
                     preOrderObj.detail[id].amount=number;
                 });
                 submitOrder();
+                break;
+            case 'close-popup':
+                $('.pop-up').hide();
                 break;
             default :
                 break;
@@ -214,7 +223,16 @@ function registEvent(){
     });
     $(document).on('change','.customer-select',function(){
         var customerId=$(this).val();
-        preOrderObj.customer=customerId
+        preOrderObj.customer=customerId;
+        getCustomerDetail({customer_id:customerId},null);
+    });
+    $(document).on('change','.customer-input',function(){
+       var field=$(this).data('field');
+        var element=$(this).next('.tips');
+        var value=$(this).val();
+        var data={0:field+' like "%'+value+'%"'};
+        $('.tips').empty();
+        getCustomerDetail(data,element);
     });
 //    $(document).on('click','#right',function(){
 //       $('.pop-up').hide();
@@ -308,17 +326,33 @@ function submitOrder(){
         showToast('请先选择供应商');
     }
 }
+function getCustomerDetail(data,displayJqueryElement){
+    ajaxPost('customer_detail',data,function(back){
+       var detail=backHandle(back);
+        if(detail){
+            $('customer-select').val(detail.customer_id);
+            $('.customer-input').each(function(k,v){
+               var field=$(v).data('field');
+                $(v).val(detail[field]);
+            });
+            preOrderObj.customer=detail.customer_id;
+        }else{
+            preOrderObj.customer=null;
+            displayJqueryElement.text('无符合条件客户')
+        }
+    });
+}
 function initCustomer(){
     var selectElement=categoryDisplayElementsTemplate('.category-template');
     selectElement.removeClass('category-select');
     selectElement.addClass('customer-select');
     selectElement.append('<option value="0" disabled="true" selected>请选择供应商</option>');
-    ajaxPost('customer_list',{page:0},function(back){
+    ajaxPost('customer_list',{page:0,number:50},function(back){
         var backValue=backHandle(back);
         $.each(backValue.list,function(k,v){
             var optionElement=categoryDisplayElementsTemplate('.option-template');
             optionElement.attr('value', v.customer_id);
-            optionElement.text(v.unit);
+            optionElement.text(v.customer_name);
             selectElement.append(optionElement);
         });
         $('.customer-container').append(selectElement);
