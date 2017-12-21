@@ -42,6 +42,7 @@ var TableController = {
     prepareElement:function(){
         var returnData={};
         var classList=[];
+        var outArg=arguments;
         $.each(arguments,function(k,v){
             //console.log(v);
             if($(v.toString()).length>0){
@@ -57,7 +58,11 @@ var TableController = {
             }
         });
         return function(jqueryElement){
-            return returnData[jqueryElement].clone();
+            var element=jqueryElement;
+            if(1==outArg.length){
+                element=outArg[0];
+            }
+            return returnData[element].clone();
         }
     },
 
@@ -91,6 +96,7 @@ var TableController = {
         this.methodName=methodName;
         this.handleCallback=contentHangler;
     }
+    //normalHandler:function(data)
 
 };
 //TableController.init();

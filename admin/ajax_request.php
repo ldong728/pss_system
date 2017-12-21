@@ -40,7 +40,6 @@ if (isset($_SESSION[DOMAIN]['login'])&&DOMAIN==$_SESSION[DOMAIN]['login']) {
         }
         if (isset($_POST['addTblVal'])) {//快速插入
             try{
-                mylog('add');
                 foreach ($_POST['value'] as $k=>$v) {
                     $value[$k]=addslashes($v);
                 }
@@ -71,8 +70,6 @@ if (isset($_SESSION[DOMAIN]['login'])&&DOMAIN==$_SESSION[DOMAIN]['login']) {
 }
 
 function provider_list($data){
-    verifyPms('provider_list');
-    mylog(json_encode($data));
     $back=getList('provider_tbl','provider_tbl',$data);
     echo ajaxBack($back);
 }
@@ -87,7 +84,7 @@ function category_list(){
     echo ajaxBack($back);
 }
 function product_list($data){
-    verifyPms('product_list');
+//    verifyPms(['product_list','purchase_add']);
     $back=getList('product_tbl','product_tbl',$data);
     echo ajaxBack($back);
 }
@@ -114,6 +111,63 @@ function add_category($data){
     }
 
 }
+function purchase_add_recode($data){
+    verifyPms('purchase_add');
+    $provider=$data['provider'];
+    $total_price=isset($data['total_price'])?$data['total_price']:0;
+    $details=$data['detail'];
+    $time=time();
+    pdoTransReady();
+    try{
+        $purchaseId=pdoInsert('purchase_tbl',['provider'=>$provider,'total_price'=>$total_price,'create_time_unix'=>$time,'creator'=>$_SESSION[DOMAIN]['operator_id']],'update');
+        if($purchaseId){
+            $values=[];
+            $valuesStock=[];
+
+            foreach ($details as $k=>$row) {
+                $values[$k]=$row;
+                $values[$k]['purchase']=$purchaseId;
+                $valuesStock[$k]=$values[$k];
+                $valuesStock[$k]['create_time_unix']=$time;
+                exeNew('update product_tbl set stock=stock+'.$row['amount'].' where product_id='.$row['product']);
+            }
+            pdoBatchInsert('purchase_detail_tbl',$values);
+            pdoBatchInsert('stock_detail_tbl',$valuesStock);
+        }
+        pdoCommit();
+    }catch(PDOException $d){
+        mylog($d);
+        pdoRollBack();
+        echo ajaxBack(null,9,'数据库错误');
+    }
+        echo ajaxBack('ok');
+
+
+}
+function purchase_list($data){
+    $back=getList('purchase_view','purchase_tbl',$data);
+    echo ajaxBack($back);
+}
+function get_purchase_detail($data){
+    $purchaseId=$data['where']['purchase_id'];
+    if($purchaseId){
+        $purchaseInf=pdoQuery('purchase_view',null,['purchase_id'=>$purchaseId],'limit 1')->fetch();
+        $purchaseList=pdoQuery('purchase_detail_view',null,['purchase'=>$purchaseId],null);
+        $purchaseList->setFetchMode(PDO::FETCH_ASSOC);
+        $list=$purchaseList->fetchAll();
+        echo ajaxBack(['count'=>0,'page'=>0,'inf'=>$purchaseInf,'list'=>$list]);
+    }else{
+        echo ajaxBack(null,9,'参数错误');
+    }
+
+    mylog($purchaseId);
+}
+function customer_list($data){
+    $back=getList('customer_tbl','customer_tbl',$data);
+    echo ajaxBack($back);
+}
+
+
 
 
 /*
@@ -131,15 +185,13 @@ function verifyPms($pms){
 
 function getList($tableName, $countTableName, $data)
 {
-    mylog($data);
-    $number = 12;
+    $number = isset($data['number'])?$data['number']:12;
     $orderby = isset($data['orderby'])&&$data['orderby']?$data['orderby']:'';
     $order = isset($data['order'])&&$data['order']?$data['order']:'';
     $start = $data['page'] * $number;
     $filter = $orderby&&$order?"order by $orderby $order":'';
     $limit = " limit $start,$number";
     $where = isset($data['where'])&&$data['where'] ? $data['where'] : null;
-    mylog($where);
     $count = pdoQueryNew($countTableName, array('count(*) as count'), $where, $filter)->fetch()['count'];
     $query = pdoQueryNew($tableName, null, $where, $filter . $limit);
     $query->setFetchMode(PDO::FETCH_ASSOC);

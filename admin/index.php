@@ -3,19 +3,6 @@
 include_once '../includePackage.php';
 include_once 'menu.php';
 session_start();
-$num=15;
-$getStr = '';
-$page=isset($_GET['page'])? $_GET['page'] : 0;
-$orderIndex=isset($_GET['index'])?$_GET['index']:'id';
-$order=isset($_GET['order'])?$_GET['order']:'asc';
-foreach ($_GET as $k => $v) {
-    if ($k == 'page') continue;
-    if ($k == 'index') continue;
-    if ($k == 'order') continue;
-    $getStr .= $k . '=' . $v . '&';
-}
-$getStr=rtrim($getStr,'&');
-$filter=' order by '.$orderIndex.' '.$order.' '.'limit '.$num*$page.','.$num;
 if (isset($_GET['logout'])) {//登出
     unset($_SESSION[DOMAIN]);
     include 'view/login.html.php';
@@ -97,6 +84,35 @@ function product_edit(){
 }
 function purchase_add(){
     printAdminView('purchase_add.html.php','进货录入');
+}
+function purchase_list(){
+    printAdminView('purchase_list.html.php','进货记录');
+}
+function purchase_detail(){
+    global $purchaseId;
+    $purchaseId=isset($_GET['purchase_id'])?$_GET['purchase_id']:0;
+    printAdminView('purchase_detail.html.php','进货详情');
+}
+function customer_list(){
+    printAdminView('customer_list.html.php','客户列表');
+}
+function customer_edit(){
+    global $customerInf;
+    $customerId=isset($_GET['customer_id'])?$_GET['customer_id']:0;
+    $modeName='用户编辑';
+    if($customerId){
+        $customerQuery=pdoQuery('customer_tbl',null,['customer_id'=>$customerId],'limit 1');
+        $customerQuery->setFetchMode(PDO::FETCH_ASSOC);
+        $customerInf=$customerQuery->fetch();
+    }else{
+        $customerInf=0;
+        $modeName='新建用户';
+    }
+    printAdminView('customer_edit.html.php',$modeName);
+}
+
+function order_add(){
+    printAdminView('order_add.html.php','订单录入');
 }
 
 //以下为admin通用方法

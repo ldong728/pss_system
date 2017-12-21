@@ -1,168 +1,113 @@
-2017.12.19.15:35:08:D:\xampp\htdocs\pss_system\admin\ajax_request.php134:is array: {page: 0}
-2017.12.19.15:35:08:D:\xampp\htdocs\pss_system\admin\ajax_request.php142:
-2017.12.19.15:35:08:D:\xampp\htdocs\pss_system\includes\db.inc.php88:queryNew:SELECT count(*) as count FROM product_tbl
-2017.12.19.15:35:08:D:\xampp\htdocs\pss_system\includes\db.inc.php88:queryNew:SELECT *  FROM product_tbl  limit 0,12
-2017.12.19.15:35:45:D:\xampp\htdocs\pss_system\admin\ajax_request.php134:is array: {page: 0}
-2017.12.19.15:35:45:D:\xampp\htdocs\pss_system\admin\ajax_request.php142:
-2017.12.19.15:35:45:D:\xampp\htdocs\pss_system\includes\db.inc.php88:queryNew:SELECT count(*) as count FROM product_tbl
-2017.12.19.15:35:45:D:\xampp\htdocs\pss_system\includes\db.inc.php88:queryNew:SELECT *  FROM product_tbl  limit 0,12
-2017.12.19.15:36:05:D:\xampp\htdocs\pss_system\admin\ajax_request.php134:is array: {page: 0}
-2017.12.19.15:36:05:D:\xampp\htdocs\pss_system\admin\ajax_request.php142:
-2017.12.19.15:36:05:D:\xampp\htdocs\pss_system\includes\db.inc.php88:queryNew:SELECT count(*) as count FROM product_tbl
-2017.12.19.15:36:05:D:\xampp\htdocs\pss_system\includes\db.inc.php88:queryNew:SELECT *  FROM product_tbl  limit 0,12
-2017.12.19.15:36:40:D:\xampp\htdocs\pss_system\admin\ajax_request.php134:is array: {page: 0}
-2017.12.19.15:36:40:D:\xampp\htdocs\pss_system\admin\ajax_request.php142:
-2017.12.19.15:36:40:D:\xampp\htdocs\pss_system\includes\db.inc.php88:queryNew:SELECT count(*) as count FROM product_tbl
-2017.12.19.15:36:40:D:\xampp\htdocs\pss_system\includes\db.inc.php88:queryNew:SELECT *  FROM product_tbl  limit 0,12
-2017.12.19.15:37:03:D:\xampp\htdocs\pss_system\admin\ajax_request.php134:is array: {page: 0}
-2017.12.19.15:37:03:D:\xampp\htdocs\pss_system\admin\ajax_request.php142:
-2017.12.19.15:37:03:D:\xampp\htdocs\pss_system\includes\db.inc.php88:queryNew:SELECT count(*) as count FROM product_tbl
-2017.12.19.15:37:03:D:\xampp\htdocs\pss_system\includes\db.inc.php88:queryNew:SELECT *  FROM product_tbl  limit 0,12
-2017.12.19.15:37:33:D:\xampp\htdocs\pss_system\admin\ajax_request.php134:is array: {page: 0}
-2017.12.19.15:37:33:D:\xampp\htdocs\pss_system\admin\ajax_request.php142:
-2017.12.19.15:37:33:D:\xampp\htdocs\pss_system\includes\db.inc.php88:queryNew:SELECT count(*) as count FROM product_tbl
-2017.12.19.15:37:33:D:\xampp\htdocs\pss_system\includes\db.inc.php88:queryNew:SELECT *  FROM product_tbl  limit 0,12
-2017.12.19.15:37:51:D:\xampp\htdocs\pss_system\admin\ajax_request.php134:is array: {page: 0}
-2017.12.19.15:37:51:D:\xampp\htdocs\pss_system\admin\ajax_request.php142:
-2017.12.19.15:37:51:D:\xampp\htdocs\pss_system\includes\db.inc.php88:queryNew:SELECT count(*) as count FROM product_tbl
-2017.12.19.15:37:51:D:\xampp\htdocs\pss_system\includes\db.inc.php88:queryNew:SELECT *  FROM product_tbl  limit 0,12
-2017.12.19.15:42:32:D:\xampp\htdocs\pss_system\admin\ajax_request.php134:is array: {page: 0}
-2017.12.19.15:42:32:D:\xampp\htdocs\pss_system\admin\ajax_request.php142:
-2017.12.19.15:42:32:D:\xampp\htdocs\pss_system\includes\db.inc.php88:queryNew:SELECT count(*) as count FROM product_tbl
-2017.12.19.15:42:32:D:\xampp\htdocs\pss_system\includes\db.inc.php88:queryNew:SELECT *  FROM product_tbl  limit 0,12
-2017.12.19.15:43:15:D:\xampp\htdocs\pss_system\admin\ajax_request.php134:is array: {page: 0}
-2017.12.19.15:43:15:D:\xampp\htdocs\pss_system\admin\ajax_request.php142:
-2017.12.19.15:43:15:D:\xampp\htdocs\pss_system\includes\db.inc.php88:queryNew:SELECT count(*) as count FROM product_tbl
-2017.12.19.15:43:15:D:\xampp\htdocs\pss_system\includes\db.inc.php88:queryNew:SELECT *  FROM product_tbl  limit 0,12
-2017.12.19.15:45:12:D:\xampp\htdocs\pss_system\admin\ajax_request.php75:{"page":"0"}
-2017.12.19.15:45:12:D:\xampp\htdocs\pss_system\admin\ajax_request.php134:is array: {page: 0}
-2017.12.19.15:45:12:D:\xampp\htdocs\pss_system\admin\ajax_request.php142:
-2017.12.19.15:45:12:D:\xampp\htdocs\pss_system\includes\db.inc.php88:queryNew:SELECT count(*) as count FROM provider_tbl
-2017.12.19.15:45:12:D:\xampp\htdocs\pss_system\includes\db.inc.php88:queryNew:SELECT *  FROM provider_tbl  limit 0,12
-2017.12.19.15:46:48:D:\xampp\htdocs\pss_system\admin\ajax_request.php75:{"page":"0"}
-2017.12.19.15:46:48:D:\xampp\htdocs\pss_system\admin\ajax_request.php134:is array: {page: 0}
-2017.12.19.15:46:48:D:\xampp\htdocs\pss_system\admin\ajax_request.php142:
-2017.12.19.15:46:48:D:\xampp\htdocs\pss_system\includes\db.inc.php88:queryNew:SELECT count(*) as count FROM provider_tbl
-2017.12.19.15:46:48:D:\xampp\htdocs\pss_system\includes\db.inc.php88:queryNew:SELECT *  FROM provider_tbl  limit 0,12
-2017.12.19.15:47:45:D:\xampp\htdocs\pss_system\admin\ajax_request.php75:{"page":"0"}
-2017.12.19.15:47:45:D:\xampp\htdocs\pss_system\admin\ajax_request.php134:is array: {page: 0}
-2017.12.19.15:47:45:D:\xampp\htdocs\pss_system\admin\ajax_request.php142:
-2017.12.19.15:47:45:D:\xampp\htdocs\pss_system\includes\db.inc.php88:queryNew:SELECT count(*) as count FROM provider_tbl
-2017.12.19.15:47:45:D:\xampp\htdocs\pss_system\includes\db.inc.php88:queryNew:SELECT *  FROM provider_tbl  limit 0,12
-2017.12.19.15:49:08:D:\xampp\htdocs\pss_system\admin\ajax_request.php134:is array: {page: 0}
-2017.12.19.15:49:08:D:\xampp\htdocs\pss_system\admin\ajax_request.php142:
-2017.12.19.15:49:08:D:\xampp\htdocs\pss_system\includes\db.inc.php88:queryNew:SELECT count(*) as count FROM product_tbl
-2017.12.19.15:49:08:D:\xampp\htdocs\pss_system\includes\db.inc.php88:queryNew:SELECT *  FROM product_tbl  limit 0,12
-2017.12.19.17:32:48:D:\xampp\htdocs\pss_system\admin\ajax_request.php43:add
-2017.12.19.17:32:52:D:\xampp\htdocs\pss_system\admin\ajax_request.php134:is array: {page: 0}
-2017.12.19.17:32:52:D:\xampp\htdocs\pss_system\admin\ajax_request.php142:
-2017.12.19.17:32:52:D:\xampp\htdocs\pss_system\includes\db.inc.php88:queryNew:SELECT count(*) as count FROM product_tbl
-2017.12.19.17:32:52:D:\xampp\htdocs\pss_system\includes\db.inc.php88:queryNew:SELECT *  FROM product_tbl  limit 0,12
-2017.12.19.17:33:02:D:\xampp\htdocs\pss_system\admin\ajax_request.php134:is array: {where: {category: {0: 10,1: 12,2: 13,3: 9,4: 8,5: 1}}page: 0}
-2017.12.19.17:33:02:D:\xampp\htdocs\pss_system\admin\ajax_request.php142:is array: {category: {0: 10,1: 12,2: 13,3: 9,4: 8,5: 1}}
-2017.12.19.17:33:02:D:\xampp\htdocs\pss_system\includes\db.inc.php50:{"category":["10","12","13","9","8","1"]}
-2017.12.19.17:33:02:D:\xampp\htdocs\pss_system\includes\db.inc.php88:queryNew:SELECT count(*) as count FROM product_tbl WHERE category in("10","12","13","9","8","1")
-2017.12.19.17:33:02:D:\xampp\htdocs\pss_system\includes\db.inc.php50:{"category":["10","12","13","9","8","1"]}
-2017.12.19.17:33:02:D:\xampp\htdocs\pss_system\includes\db.inc.php88:queryNew:SELECT *  FROM product_tbl WHERE category in("10","12","13","9","8","1")  limit 0,12
-2017.12.19.17:33:05:D:\xampp\htdocs\pss_system\admin\ajax_request.php134:is array: {where: {category: {0: 12,1: 13,2: 10}}page: 0}
-2017.12.19.17:33:05:D:\xampp\htdocs\pss_system\admin\ajax_request.php142:is array: {category: {0: 12,1: 13,2: 10}}
-2017.12.19.17:33:05:D:\xampp\htdocs\pss_system\includes\db.inc.php50:{"category":["12","13","10"]}
-2017.12.19.17:33:05:D:\xampp\htdocs\pss_system\includes\db.inc.php88:queryNew:SELECT count(*) as count FROM product_tbl WHERE category in("12","13","10")
-2017.12.19.17:33:05:D:\xampp\htdocs\pss_system\includes\db.inc.php50:{"category":["12","13","10"]}
-2017.12.19.17:33:05:D:\xampp\htdocs\pss_system\includes\db.inc.php88:queryNew:SELECT *  FROM product_tbl WHERE category in("12","13","10")  limit 0,12
-2017.12.19.17:33:06:D:\xampp\htdocs\pss_system\admin\ajax_request.php134:is array: {where: {category: 13}page: 0}
-2017.12.19.17:33:07:D:\xampp\htdocs\pss_system\admin\ajax_request.php142:is array: {category: 13}
-2017.12.19.17:33:07:D:\xampp\htdocs\pss_system\includes\db.inc.php50:{"category":"13"}
-2017.12.19.17:33:07:D:\xampp\htdocs\pss_system\includes\db.inc.php88:queryNew:SELECT count(*) as count FROM product_tbl WHERE category="13"
-2017.12.19.17:33:07:D:\xampp\htdocs\pss_system\includes\db.inc.php50:{"category":"13"}
-2017.12.19.17:33:07:D:\xampp\htdocs\pss_system\includes\db.inc.php88:queryNew:SELECT *  FROM product_tbl WHERE category="13"  limit 0,12
-2017.12.19.17:33:08:D:\xampp\htdocs\pss_system\admin\ajax_request.php134:is array: {where: {category: 12}page: 0}
-2017.12.19.17:33:08:D:\xampp\htdocs\pss_system\admin\ajax_request.php142:is array: {category: 12}
-2017.12.19.17:33:08:D:\xampp\htdocs\pss_system\includes\db.inc.php50:{"category":"12"}
-2017.12.19.17:33:08:D:\xampp\htdocs\pss_system\includes\db.inc.php88:queryNew:SELECT count(*) as count FROM product_tbl WHERE category="12"
-2017.12.19.17:33:08:D:\xampp\htdocs\pss_system\includes\db.inc.php50:{"category":"12"}
-2017.12.19.17:33:08:D:\xampp\htdocs\pss_system\includes\db.inc.php88:queryNew:SELECT *  FROM product_tbl WHERE category="12"  limit 0,12
-2017.12.19.17:33:46:D:\xampp\htdocs\pss_system\admin\ajax_request.php134:is array: {page: 0}
-2017.12.19.17:33:46:D:\xampp\htdocs\pss_system\admin\ajax_request.php142:
-2017.12.19.17:33:46:D:\xampp\htdocs\pss_system\includes\db.inc.php88:queryNew:SELECT count(*) as count FROM product_tbl
-2017.12.19.17:33:46:D:\xampp\htdocs\pss_system\includes\db.inc.php88:queryNew:SELECT *  FROM product_tbl  limit 0,12
-2017.12.19.17:34:29:D:\xampp\htdocs\pss_system\admin\ajax_request.php134:is array: {page: 0}
-2017.12.19.17:34:29:D:\xampp\htdocs\pss_system\admin\ajax_request.php142:
-2017.12.19.17:34:29:D:\xampp\htdocs\pss_system\includes\db.inc.php88:queryNew:SELECT count(*) as count FROM product_tbl
-2017.12.19.17:34:29:D:\xampp\htdocs\pss_system\includes\db.inc.php88:queryNew:SELECT *  FROM product_tbl  limit 0,12
-2017.12.19.17:35:29:D:\xampp\htdocs\pss_system\admin\ajax_request.php134:is array: {page: 0}
-2017.12.19.17:35:29:D:\xampp\htdocs\pss_system\admin\ajax_request.php142:
-2017.12.19.17:35:29:D:\xampp\htdocs\pss_system\includes\db.inc.php88:queryNew:SELECT count(*) as count FROM product_tbl
-2017.12.19.17:35:29:D:\xampp\htdocs\pss_system\includes\db.inc.php88:queryNew:SELECT *  FROM product_tbl  limit 0,12
-2017.12.19.17:48:05:D:\xampp\htdocs\pss_system\admin\ajax_request.php43:add
-2017.12.19.17:48:07:D:\xampp\htdocs\pss_system\admin\ajax_request.php134:is array: {page: 0}
-2017.12.19.17:48:07:D:\xampp\htdocs\pss_system\admin\ajax_request.php142:
-2017.12.19.17:48:07:D:\xampp\htdocs\pss_system\includes\db.inc.php88:queryNew:SELECT count(*) as count FROM product_tbl
-2017.12.19.17:48:07:D:\xampp\htdocs\pss_system\includes\db.inc.php88:queryNew:SELECT *  FROM product_tbl  limit 0,12
-2017.12.19.17:57:22:D:\xampp\htdocs\pss_system\admin\ajax_request.php134:is array: {page: 0}
-2017.12.19.17:57:22:D:\xampp\htdocs\pss_system\admin\ajax_request.php142:
-2017.12.19.17:57:22:D:\xampp\htdocs\pss_system\includes\db.inc.php88:queryNew:SELECT count(*) as count FROM product_tbl
-2017.12.19.17:57:22:D:\xampp\htdocs\pss_system\includes\db.inc.php88:queryNew:SELECT *  FROM product_tbl  limit 0,12
-2017.12.19.17:57:50:D:\xampp\htdocs\pss_system\admin\ajax_request.php134:is array: {page: 0}
-2017.12.19.17:57:50:D:\xampp\htdocs\pss_system\admin\ajax_request.php142:
-2017.12.19.17:57:50:D:\xampp\htdocs\pss_system\includes\db.inc.php88:queryNew:SELECT count(*) as count FROM product_tbl
-2017.12.19.17:57:50:D:\xampp\htdocs\pss_system\includes\db.inc.php88:queryNew:SELECT *  FROM product_tbl  limit 0,12
-2017.12.19.17:58:48:D:\xampp\htdocs\pss_system\admin\ajax_request.php134:is array: {page: 0}
-2017.12.19.17:58:48:D:\xampp\htdocs\pss_system\admin\ajax_request.php142:
-2017.12.19.17:58:48:D:\xampp\htdocs\pss_system\includes\db.inc.php88:queryNew:SELECT count(*) as count FROM product_tbl
-2017.12.19.17:58:48:D:\xampp\htdocs\pss_system\includes\db.inc.php88:queryNew:SELECT *  FROM product_tbl  limit 0,12
-2017.12.19.18:04:05:D:\xampp\htdocs\pss_system\admin\ajax_request.php43:add
-2017.12.19.18:04:05:D:\xampp\htdocs\pss_system\admin\ajax_request.php134:is array: {page: 0}
-2017.12.19.18:04:05:D:\xampp\htdocs\pss_system\admin\ajax_request.php142:
-2017.12.19.18:04:05:D:\xampp\htdocs\pss_system\includes\db.inc.php88:queryNew:SELECT count(*) as count FROM product_tbl
-2017.12.19.18:04:05:D:\xampp\htdocs\pss_system\includes\db.inc.php88:queryNew:SELECT *  FROM product_tbl  limit 0,12
-2017.12.19.18:04:19:D:\xampp\htdocs\pss_system\admin\ajax_request.php134:is array: {page: 0}
-2017.12.19.18:04:19:D:\xampp\htdocs\pss_system\admin\ajax_request.php142:
-2017.12.19.18:04:19:D:\xampp\htdocs\pss_system\includes\db.inc.php88:queryNew:SELECT count(*) as count FROM product_tbl
-2017.12.19.18:04:19:D:\xampp\htdocs\pss_system\includes\db.inc.php88:queryNew:SELECT *  FROM product_tbl  limit 0,12
-2017.12.19.18:04:21:D:\xampp\htdocs\pss_system\admin\ajax_request.php134:is array: {where: {category: {0: 10,1: 12,2: 13,3: 9,4: 8,5: 1}}page: 0}
-2017.12.19.18:04:21:D:\xampp\htdocs\pss_system\admin\ajax_request.php142:is array: {category: {0: 10,1: 12,2: 13,3: 9,4: 8,5: 1}}
-2017.12.19.18:04:21:D:\xampp\htdocs\pss_system\includes\db.inc.php50:{"category":["10","12","13","9","8","1"]}
-2017.12.19.18:04:21:D:\xampp\htdocs\pss_system\includes\db.inc.php88:queryNew:SELECT count(*) as count FROM product_tbl WHERE category in("10","12","13","9","8","1")
-2017.12.19.18:04:21:D:\xampp\htdocs\pss_system\includes\db.inc.php50:{"category":["10","12","13","9","8","1"]}
-2017.12.19.18:04:21:D:\xampp\htdocs\pss_system\includes\db.inc.php88:queryNew:SELECT *  FROM product_tbl WHERE category in("10","12","13","9","8","1")  limit 0,12
-2017.12.19.18:04:23:D:\xampp\htdocs\pss_system\admin\ajax_request.php134:is array: {where: {category: 9}page: 0}
-2017.12.19.18:04:23:D:\xampp\htdocs\pss_system\admin\ajax_request.php142:is array: {category: 9}
-2017.12.19.18:04:23:D:\xampp\htdocs\pss_system\includes\db.inc.php50:{"category":"9"}
-2017.12.19.18:04:23:D:\xampp\htdocs\pss_system\includes\db.inc.php88:queryNew:SELECT count(*) as count FROM product_tbl WHERE category="9"
-2017.12.19.18:04:23:D:\xampp\htdocs\pss_system\includes\db.inc.php50:{"category":"9"}
-2017.12.19.18:04:23:D:\xampp\htdocs\pss_system\includes\db.inc.php88:queryNew:SELECT *  FROM product_tbl WHERE category="9"  limit 0,12
-2017.12.19.18:04:24:D:\xampp\htdocs\pss_system\admin\ajax_request.php134:is array: {where: {category: {0: 12,1: 13,2: 10}}page: 0}
-2017.12.19.18:04:24:D:\xampp\htdocs\pss_system\admin\ajax_request.php142:is array: {category: {0: 12,1: 13,2: 10}}
-2017.12.19.18:04:24:D:\xampp\htdocs\pss_system\includes\db.inc.php50:{"category":["12","13","10"]}
-2017.12.19.18:04:24:D:\xampp\htdocs\pss_system\includes\db.inc.php88:queryNew:SELECT count(*) as count FROM product_tbl WHERE category in("12","13","10")
-2017.12.19.18:04:24:D:\xampp\htdocs\pss_system\includes\db.inc.php50:{"category":["12","13","10"]}
-2017.12.19.18:04:24:D:\xampp\htdocs\pss_system\includes\db.inc.php88:queryNew:SELECT *  FROM product_tbl WHERE category in("12","13","10")  limit 0,12
-2017.12.19.18:04:27:D:\xampp\htdocs\pss_system\admin\ajax_request.php134:is array: {where: {category: 13}page: 0}
-2017.12.19.18:04:27:D:\xampp\htdocs\pss_system\admin\ajax_request.php142:is array: {category: 13}
-2017.12.19.18:04:27:D:\xampp\htdocs\pss_system\includes\db.inc.php50:{"category":"13"}
-2017.12.19.18:04:27:D:\xampp\htdocs\pss_system\includes\db.inc.php88:queryNew:SELECT count(*) as count FROM product_tbl WHERE category="13"
-2017.12.19.18:04:27:D:\xampp\htdocs\pss_system\includes\db.inc.php50:{"category":"13"}
-2017.12.19.18:04:27:D:\xampp\htdocs\pss_system\includes\db.inc.php88:queryNew:SELECT *  FROM product_tbl WHERE category="13"  limit 0,12
-2017.12.19.18:04:28:D:\xampp\htdocs\pss_system\admin\ajax_request.php134:is array: {where: {category: 12}page: 0}
-2017.12.19.18:04:28:D:\xampp\htdocs\pss_system\admin\ajax_request.php142:is array: {category: 12}
-2017.12.19.18:04:28:D:\xampp\htdocs\pss_system\includes\db.inc.php50:{"category":"12"}
-2017.12.19.18:04:28:D:\xampp\htdocs\pss_system\includes\db.inc.php88:queryNew:SELECT count(*) as count FROM product_tbl WHERE category="12"
-2017.12.19.18:04:28:D:\xampp\htdocs\pss_system\includes\db.inc.php50:{"category":"12"}
-2017.12.19.18:04:28:D:\xampp\htdocs\pss_system\includes\db.inc.php88:queryNew:SELECT *  FROM product_tbl WHERE category="12"  limit 0,12
-2017.12.20.08:43:14:D:\xampp\htdocs\pss_system\admin\ajax_request.php134:is array: {page: 0}
-2017.12.20.08:43:14:D:\xampp\htdocs\pss_system\admin\ajax_request.php142:
-2017.12.20.08:43:14:D:\xampp\htdocs\pss_system\includes\db.inc.php88:queryNew:SELECT count(*) as count FROM product_tbl
-2017.12.20.08:43:14:D:\xampp\htdocs\pss_system\includes\db.inc.php88:queryNew:SELECT *  FROM product_tbl  limit 0,12
-2017.12.20.09:01:00:D:\xampp\htdocs\pss_system\admin\ajax_request.php134:is array: {page: 0}
-2017.12.20.09:01:00:D:\xampp\htdocs\pss_system\admin\ajax_request.php142:
-2017.12.20.09:01:00:D:\xampp\htdocs\pss_system\includes\db.inc.php88:queryNew:SELECT count(*) as count FROM product_tbl
-2017.12.20.09:01:00:D:\xampp\htdocs\pss_system\includes\db.inc.php88:queryNew:SELECT *  FROM product_tbl  limit 0,12
-2017.12.20.09:01:09:D:\xampp\htdocs\pss_system\admin\ajax_request.php134:is array: {page: 0}
-2017.12.20.09:01:09:D:\xampp\htdocs\pss_system\admin\ajax_request.php142:
-2017.12.20.09:01:09:D:\xampp\htdocs\pss_system\includes\db.inc.php88:queryNew:SELECT count(*) as count FROM product_tbl
-2017.12.20.09:01:09:D:\xampp\htdocs\pss_system\includes\db.inc.php88:queryNew:SELECT *  FROM product_tbl  limit 0,12
-2017.12.20.09:01:56:D:\xampp\htdocs\pss_system\admin\ajax_request.php134:is array: {page: 0}
-2017.12.20.09:01:56:D:\xampp\htdocs\pss_system\admin\ajax_request.php142:
-2017.12.20.09:01:56:D:\xampp\htdocs\pss_system\includes\db.inc.php88:queryNew:SELECT count(*) as count FROM product_tbl
-2017.12.20.09:01:56:D:\xampp\htdocs\pss_system\includes\db.inc.php88:queryNew:SELECT *  FROM product_tbl  limit 0,12
+2017.12.21.13:57:48:D:\xampp\htdocs\pss_system\admin\ajax_request.php43:add
+2017.12.21.13:58:36:D:\xampp\htdocs\pss_system\admin\ajax_request.php43:add
+2017.12.21.13:58:40:D:\xampp\htdocs\pss_system\admin\ajax_request.php43:add
+2017.12.21.14:07:01:D:\xampp\htdocs\pss_system\admin\ajax_request.php43:add
+2017.12.21.14:07:01:D:\xampp\htdocs\pss_system\admin\ajax_request.php50:mark
+2017.12.21.14:07:59:D:\xampp\htdocs\pss_system\admin\ajax_request.php43:add
+2017.12.21.14:07:59:D:\xampp\htdocs\pss_system\includes\db.inc.php190:INSERT INTO customer_tbl SET customer_name="王大锤",customer_tel="13566603735",address="测试地址123212321" on DUPLICATE KEY update customer_name="王大锤",customer_tel="13566603735",address="测试地址123212321"
+2017.12.21.14:07:59:D:\xampp\htdocs\pss_system\admin\ajax_request.php50:mark
+2017.12.21.14:10:14:D:\xampp\htdocs\pss_system\includes\db.inc.php190:INSERT INTO customer_tbl SET customer_name="王大锤",customer_tel="13566603839",customer_address="测试地址abc" on DUPLICATE KEY update customer_name="王大锤",customer_tel="13566603839",customer_address="测试地址abc"
+2017.12.21.14:11:44:D:\xampp\htdocs\pss_system\includes\db.inc.php190:INSERT INTO customer_tbl SET customer_name="王大锤",customer_tel="13566603839",customer_address="测试地址abc" on DUPLICATE KEY update customer_name="王大锤",customer_tel="13566603839",customer_address="测试地址abc"
+2017.12.21.14:28:28:D:\xampp\htdocs\pss_system\includes\db.inc.php190:INSERT INTO customer_tbl SET customer_id="1",customer_name="王大锤",customer_tel="13566603839",customer_address="测试地址abc大的" on DUPLICATE KEY update customer_id="1",customer_name="王大锤",customer_tel="13566603839",customer_address="测试地址abc大的"
+2017.12.21.14:32:44:D:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT count(*) as count FROM customer_tbl WHERE  costomer_name like %锤%
+2017.12.21.14:33:40:D:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT count(*) as count FROM customer_tbl WHERE  costomer_name like %锤%
+2017.12.21.14:33:53:D:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT count(*) as count FROM customer_tbl
+2017.12.21.14:33:53:D:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT *  FROM customer_tbl  limit 0,12
+2017.12.21.14:33:57:D:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT count(*) as count FROM customer_tbl WHERE  costomer_name like "%锤%"
+2017.12.21.14:34:05:D:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT count(*) as count FROM customer_tbl WHERE  costomer_name like "%哈%"
+2017.12.21.14:34:38:D:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT count(*) as count FROM customer_tbl
+2017.12.21.14:34:38:D:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT *  FROM customer_tbl  limit 0,12
+2017.12.21.14:34:40:D:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT count(*) as count FROM customer_tbl WHERE  costumer_name like "%订单%"
+2017.12.21.14:35:08:D:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT count(*) as count FROM customer_tbl
+2017.12.21.14:35:08:D:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT *  FROM customer_tbl  limit 0,12
+2017.12.21.14:35:13:D:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT count(*) as count FROM customer_tbl WHERE  customer_name like "%测%"
+2017.12.21.14:35:13:D:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT *  FROM customer_tbl WHERE  customer_name like "%测%"  limit 0,12
+2017.12.21.14:43:29:D:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT count(*) as count FROM customer_tbl
+2017.12.21.14:43:29:D:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT *  FROM customer_tbl  limit 0,12
+2017.12.21.14:43:37:D:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT count(*) as count FROM customer_tbl WHERE  customer_tel like "%343%"
+2017.12.21.14:43:37:D:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT *  FROM customer_tbl WHERE  customer_tel like "%343%"  limit 0,12
+2017.12.21.14:43:40:D:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT count(*) as count FROM customer_tbl WHERE  customer_tel like "%123%"
+2017.12.21.14:43:40:D:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT *  FROM customer_tbl WHERE  customer_tel like "%123%"  limit 0,12
+2017.12.21.14:44:01:D:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT count(*) as count FROM customer_tbl WHERE  customer_name like "%王大锤%"
+2017.12.21.14:44:01:D:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT *  FROM customer_tbl WHERE  customer_name like "%王大锤%"  limit 0,12
+2017.12.21.14:47:20:D:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT count(*) as count FROM customer_tbl
+2017.12.21.14:47:20:D:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT *  FROM customer_tbl  limit 0,12
+2017.12.21.14:47:24:D:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT count(*) as count FROM customer_tbl
+2017.12.21.14:47:24:D:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT *  FROM customer_tbl  limit 0,12
+2017.12.21.14:47:51:D:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT count(*) as count FROM customer_tbl
+2017.12.21.14:47:51:D:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT *  FROM customer_tbl  limit 0,12
+2017.12.21.14:48:16:D:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT count(*) as count FROM product_tbl
+2017.12.21.14:48:16:D:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT *  FROM product_tbl  limit 0,12
+2017.12.21.14:49:16:D:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT count(*) as count FROM customer_tbl
+2017.12.21.14:49:16:D:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT *  FROM customer_tbl  limit 0,12
+2017.12.21.14:49:50:D:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT count(*) as count FROM customer_tbl
+2017.12.21.14:49:50:D:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT *  FROM customer_tbl  limit 0,12
+2017.12.21.14:49:56:D:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT count(*) as count FROM customer_tbl
+2017.12.21.14:49:56:D:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT *  FROM customer_tbl  limit 0,12
+2017.12.21.15:03:13:D:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT count(*) as count FROM customer_tbl
+2017.12.21.15:03:13:D:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT *  FROM customer_tbl  limit 0,12
+2017.12.21.15:39:12:D:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT count(*) as count FROM provider_tbl
+2017.12.21.15:39:12:D:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT *  FROM provider_tbl  limit 0,12
+2017.12.21.15:39:14:D:\xampp\htdocs\pss_system\admin\ajax_request.php180:ajax 权限错误
+2017.12.21.15:39:15:D:\xampp\htdocs\pss_system\admin\ajax_request.php180:ajax 权限错误
+2017.12.21.15:39:17:D:\xampp\htdocs\pss_system\admin\ajax_request.php180:ajax 权限错误
+2017.12.21.15:42:55:D:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT count(*) as count FROM provider_tbl
+2017.12.21.15:42:55:D:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT *  FROM provider_tbl  limit 0,12
+2017.12.21.15:42:57:D:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT count(*) as count FROM product_tbl WHERE category in("10","12","13","9","8","1")
+2017.12.21.15:42:57:D:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT *  FROM product_tbl WHERE category in("10","12","13","9","8","1")  limit 0,12
+2017.12.21.15:44:01:D:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT count(*) as count FROM product_tbl
+2017.12.21.15:44:01:D:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT *  FROM product_tbl  limit 0,12
+2017.12.21.16:31:44:D:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT count(*) as count FROM customer_tbl
+2017.12.21.16:31:44:D:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT *  FROM customer_tbl  limit 0,12
+2017.12.21.16:32:37:D:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT count(*) as count FROM customer_tbl
+2017.12.21.16:32:37:D:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT *  FROM customer_tbl  limit 0,12
+2017.12.21.16:32:58:D:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT count(*) as count FROM customer_tbl
+2017.12.21.16:32:58:D:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT *  FROM customer_tbl  limit 0,12
+2017.12.21.16:35:37:D:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT count(*) as count FROM customer_tbl
+2017.12.21.16:35:37:D:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT *  FROM customer_tbl  limit 0,12
+2017.12.21.16:35:46:D:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT count(*) as count FROM customer_tbl
+2017.12.21.16:35:46:D:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT *  FROM customer_tbl  limit 0,12
+2017.12.21.16:36:13:D:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT count(*) as count FROM customer_tbl
+2017.12.21.16:36:13:D:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT *  FROM customer_tbl  limit 0,12
+2017.12.21.16:36:17:D:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT count(*) as count FROM product_tbl WHERE category in("10","12","13","9","8","1")
+2017.12.21.16:36:17:D:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT *  FROM product_tbl WHERE category in("10","12","13","9","8","1")  limit 0,12
+2017.12.21.16:37:23:D:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT count(*) as count FROM customer_tbl
+2017.12.21.16:37:23:D:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT *  FROM customer_tbl  limit 0,12
+2017.12.21.16:38:11:D:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT count(*) as count FROM customer_tbl
+2017.12.21.16:38:11:D:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT *  FROM customer_tbl  limit 0,12
+2017.12.21.16:38:25:D:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT count(*) as count FROM product_tbl WHERE  name like "%测试%"
+2017.12.21.16:38:25:D:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT *  FROM product_tbl WHERE  name like "%测试%"  limit 0,12
+2017.12.21.16:49:39:D:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT count(*) as count FROM customer_tbl
+2017.12.21.16:49:39:D:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT *  FROM customer_tbl  limit 0,12
+2017.12.21.16:50:00:D:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT count(*) as count FROM product_tbl WHERE category in("10","12","13","9","8","1")
+2017.12.21.16:50:00:D:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT *  FROM product_tbl WHERE category in("10","12","13","9","8","1")  limit 0,12
+2017.12.21.16:50:37:D:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT count(*) as count FROM customer_tbl
+2017.12.21.16:50:37:D:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT *  FROM customer_tbl  limit 0,12
+2017.12.21.16:51:18:D:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT count(*) as count FROM customer_tbl
+2017.12.21.16:51:18:D:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT *  FROM customer_tbl  limit 0,12
+2017.12.21.16:51:25:D:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT count(*) as count FROM customer_tbl
+2017.12.21.16:51:25:D:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT *  FROM customer_tbl  limit 0,12
+2017.12.21.16:51:51:D:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT count(*) as count FROM customer_tbl
+2017.12.21.16:51:51:D:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT *  FROM customer_tbl  limit 0,12
+2017.12.21.16:51:59:D:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT count(*) as count FROM customer_tbl
+2017.12.21.16:51:59:D:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT *  FROM customer_tbl  limit 0,12
+2017.12.21.16:52:45:D:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT count(*) as count FROM customer_tbl
+2017.12.21.16:52:45:D:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT *  FROM customer_tbl  limit 0,12
+2017.12.21.16:53:37:D:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT count(*) as count FROM product_tbl WHERE category in("10","12","13","9","8","1")
+2017.12.21.16:53:37:D:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT *  FROM product_tbl WHERE category in("10","12","13","9","8","1")  limit 0,12
+2017.12.21.16:53:39:D:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT count(*) as count FROM product_tbl WHERE category="9"
+2017.12.21.16:53:39:D:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT *  FROM product_tbl WHERE category="9"  limit 0,12
+2017.12.21.16:53:40:D:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT count(*) as count FROM product_tbl WHERE category in("12","13","10")
+2017.12.21.16:53:40:D:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT *  FROM product_tbl WHERE category in("12","13","10")  limit 0,12
+2017.12.21.16:54:47:D:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT count(*) as count FROM customer_tbl
+2017.12.21.16:54:47:D:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT *  FROM customer_tbl  limit 0,12
+2017.12.21.16:54:56:D:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT count(*) as count FROM product_tbl WHERE category in("10","12","13","9","8","1")
+2017.12.21.16:54:56:D:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT *  FROM product_tbl WHERE category in("10","12","13","9","8","1")  limit 0,12
+2017.12.21.16:54:57:D:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT count(*) as count FROM product_tbl WHERE category in("12","13","10")
+2017.12.21.16:54:57:D:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT *  FROM product_tbl WHERE category in("12","13","10")  limit 0,12
+2017.12.21.17:06:27:D:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT count(*) as count FROM customer_tbl
+2017.12.21.17:06:27:D:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT *  FROM customer_tbl  limit 0,12
+2017.12.21.17:09:08:D:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT count(*) as count FROM customer_tbl
+2017.12.21.17:09:08:D:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT *  FROM customer_tbl  limit 0,12
+2017.12.21.18:01:32:D:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT count(*) as count FROM customer_tbl
+2017.12.21.18:01:32:D:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT *  FROM customer_tbl  limit 0,12

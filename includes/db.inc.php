@@ -18,7 +18,7 @@ try {
 
 
 
-function exeNew($s){
+function exeNew($s) {
     try{
         $GLOBALS['pdo']->exec($s);
         return $GLOBALS['pdo']->lastInsertId();
@@ -47,12 +47,10 @@ function pdoQueryNew($tableName,$fields,$filter,$append){
     if ($whereCount > 0) {
         $sql = $sql . ' WHERE ';
         $j = 0;
-        mylog(json_encode($filter));
         foreach ($filter as $k => $v) {
             $content='';
             if(is_numeric($k)){
                 $strArray=explode(' ',$v);
-                mylog(getArrayInf($strArray));
                 $content=' '.trim($v);
                 if($j>0&&!in_array($strArray[0],['and','or','AND','OR']))$content=' AND'.$content;
                 $j++;
@@ -248,6 +246,9 @@ function pdoUpdate($tableName,array $value,array $where,$str=''){
         include 'error.html.php';
         exit();
     }
+
+}
+function pdoBatchUpdate($tableName,array $valueAndWhere,$str=''){
 
 }
 function pdoDelete($tableName,array $where,$str=''){
