@@ -174,6 +174,24 @@ function customer_detail($data){
         echo ajaxBack(null,12,'无记录');
     }
 }
+function order_add($data){
+    $customer=$data['customer'];
+    $detail=$data['detail'];
+    $totalPrice=0;
+    $productIdList=[];
+    $orderDetailValue=[];
+    $stockDetailValue=[];
+    foreach ($detail as $k=>$k) {
+        $productIdList[]=$k;
+    }
+    $pruductInf=pdoQuery('product_tbl',['product_id','default_price'],['product'=>])
+
+
+
+    verifyPms('order_add');
+
+    mylog(json_encode($data,true));
+}
 
 
 

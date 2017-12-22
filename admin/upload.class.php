@@ -9,7 +9,7 @@
 
 //wxlog('include uploadClass ok');
 define('filePath','../files');
-define('maxSize',20000);
+define('maxSize',10000);
 define('FILE_FIELD','file-up');
 class uploader
 {
@@ -55,7 +55,7 @@ class uploader
             $this->config = array(
                 "savePath" => filePath ,             //存储文件夹
                 "maxSize" => maxSize,                   //允许的文件最大尺寸，单位KB
-                "allowFiles" => array(".png" , ".jpg" , ".jpeg" , ".bmp",'.apk' )  //允许的文件格式
+                "allowFiles" => array(".jpg" , ".jpeg")  //允许的文件格式
             );
         }else{
             $this->config=$config;

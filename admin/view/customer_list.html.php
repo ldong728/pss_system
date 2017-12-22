@@ -110,7 +110,6 @@
                 var element=getSubCategoryElment(id);
 
                 if(element){
-
                     $(this).after(element);
                     categoryFilter=getAllSubCategory(id);
                     categoryFilter.push(id);

@@ -2,15 +2,25 @@
 <script>
     var productInf = <?php echo $productInf? json_encode($productInf):'{}'?>;
 </script>
-
+<style>
+    img {
+        width: 50px;
+        height: auto;
+    }
+</style>
+<script type="application/javascript" src="js/ajaxfileupload.js"></script>
 <div id="core" style="height: 618px;">
     <div class="block">
         <div class="head" style="width: 98%;"><span>产品信息</span></div>
         <div class="main">
             <table class="table baseInfo">
                 <tr>
-                    <td>类别</td>
+                    <td>类别：</td>
                     <td colspan="3" class="category-filter"><select class="category-template category-select product-normal-info" data-field="category"><option class="option-template"></option></select></td>
+                </tr>
+                <tr>
+                    <td>商品主图：</td>
+                    <td colspan="3"><button class="button upload-img">上传主图</button><img class="img-demo img" alt="商品图"><input type="hidden" id="img-field" class="product-normal-info" data-field="img"></td>
                 </tr>
                 <tr>
                     <td>商品名称：</td>
@@ -19,13 +29,13 @@
                     <td><input class="product-normal-info" data-field="sn" placeholder="序列号"></td>
                 </tr>
                 <tr>
-                    <td>商品描述</td>
-                    <td colspan="3"><input width="600" class="product-normal-info" data-field="description" placeholder="商品描述"></td>
+                    <td>商品描述：</td>
+                    <td colspan="3"><input class="product-normal-info" data-field="description" placeholder="商品描述" style="max-width: 100%;min-width: 150px;width: 80%"></td>
                 </tr>
                 <tr>
-                    <td>价格</td>
+                    <td>价格：</td>
                     <td><input type="tel" class="product-normal-info" data-field="default_price" placeholder="价格"> </td>
-                    <td>计量单位</td>
+                    <td>计量单位：</td>
                     <td><input class="product-normal-info" data-field="unit" placeholder="个" value="个"></td>
                 </tr>
             </table>
@@ -35,6 +45,7 @@
         </div>
     </div>
     <div class="space"></div>
+    <input type="file" id="product-img" name="product-img" style="display: none">
     <script type="application/javascript" src="js/tableController.js"></script>
     <script>
         var categoryList,categoryDisplayElementsTemplate;
@@ -66,6 +77,32 @@
                     }else{
                     }
                 }
+            });
+            $(document).on('click','.upload-img',function(){
+                $('#product-img').click();
+            });
+            $(document).on('change','#product-img',function(){
+                $.ajaxFileUpload({
+                    url: 'upload.php',
+                    secureuri: false,
+                    fileElementId: $(this).attr('id'), //文件上传域的ID
+                    dataType: 'json', //返回值类型 一般设置为json
+                    success: function (v, status) {
+                        if ('SUCCESS' == v.state) {
+//                            $('#title-img-display').attr('src', v.url);
+//                            goodsInf.goods_image = v.name;
+                            $('.img-demo').attr('src', v.url);
+                            $('#img-field').val(v.url);
+
+                            console.log(v);
+                        } else {
+                            showToast(v.state);
+                        }
+                    },//服务器成功响应处理函数
+                    error: function (d) {
+                        alert('error');
+                    }
+                });
             });
         }
         function initCategory(){
@@ -106,6 +143,7 @@
                     var field=$(v).data('field');
                     v.value=productInf[field];
                 });
+
                 var category=productInf.category;
                 console.log(category);
                 $('select.product-normal-info').removeClass('product-normal-info');

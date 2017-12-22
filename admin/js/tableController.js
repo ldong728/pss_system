@@ -14,6 +14,9 @@ var TableController = {
     setPage:function(page){
         this.filter.page=page;
     },
+    setNumber:function(number){
+      this.filter.number=number;
+    },
     addFilter:function(filter){
         if('object'==typeof(filter)){
             for(var i in filter){

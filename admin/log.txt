@@ -1,9 +1,1 @@
-2017.12.21.22:41:56:C:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT count(*) as count FROM customer_tbl
-2017.12.21.22:41:56:C:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT *  FROM customer_tbl  limit 0,50
-2017.12.21.22:42:02:C:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT *  FROM customer_tbl WHERE  customer_name is like "%王%" limit 1
-2017.12.21.22:43:25:C:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT count(*) as count FROM customer_tbl
-2017.12.21.22:43:25:C:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT *  FROM customer_tbl  limit 0,50
-2017.12.21.22:43:30:C:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT *  FROM customer_tbl WHERE  customer_name like "%王%" limit 1
-2017.12.21.22:45:24:C:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT count(*) as count FROM customer_tbl
-2017.12.21.22:45:24:C:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT *  FROM customer_tbl  limit 0,50
-2017.12.21.22:45:27:C:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT *  FROM customer_tbl WHERE customer_id="1" limit 1
+2017.12.22.16:10:01:D:\xampp\htdocs\pss_system\admin\ajax_request.php179:{"customer":{"customer_tel":"12988787887","customer_name":"\u5b54\u8fde\u987a","customer_address":"abced"},"total_price":"","detail":{"2":{"product":"2","amount":"1"}}}
