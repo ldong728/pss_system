@@ -52,7 +52,7 @@
                     <ul class="sub_menu" style="display: <?php echo isset($_GET['menu'])&&$_GET['menu']==$row['key'] ? 'block' : 'none' ?>">
                         <?php foreach($row['sub'] as $subrow):?>
                             <li >
-                                <a href="index.php?menu=<?php echo $key?>&sub=<?php echo $subrow['key']?>"><?php echo $subrow['name']?></a>
+                                <a href="index.php?menu=<?=$key?>&sub=<?=$subrow['key']?>"><?=$subrow['name']?></a>
                             </li>
                         <?php endforeach ?>
                     </ul>

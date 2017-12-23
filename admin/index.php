@@ -110,11 +110,14 @@ function customer_edit(){
     }
     printAdminView('customer_edit.html.php',$modeName);
 }
-
 function order_add(){
     printAdminView('order_add.html.php','订单录入');
 }
-
+function order_detail(){
+    global $orderId;
+    $orderId=isset($_GET['order_id'])?$_GET['order_id']:0;
+    printAdminView('order_detail.html.php','订单详情');
+}
 //以下为admin通用方法
 function options(){
     global $pmsList,$subMenuList;

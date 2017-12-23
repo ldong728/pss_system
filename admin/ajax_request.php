@@ -177,20 +177,61 @@ function customer_detail($data){
 function order_add($data){
     $customer=$data['customer'];
     $detail=$data['detail'];
-    $totalPrice=0;
+    $totalPrice=$data['total_price'];
+    $time=time();
+    $orderId=0;
     $productIdList=[];
     $orderDetailValue=[];
     $stockDetailValue=[];
-    foreach ($detail as $k=>$k) {
-        $productIdList[]=$k;
+    pdoTransReady();
+    try{
+        if(is_array($customer)){
+            $customerId=pdoInsert('customer_tbl',$customer,'ignore');
+        }else{
+            $customerId=$customer;
+        }
+        if($customerId){
+            $orderId=pdoInsert('order_tbl',['customer'=>$customerId,'total_fee'=>$totalPrice,'create_time_unix'=>$time,'creator'=>$_SESSION[DOMAIN]['operator_id']],'update');
+        }
+        if($orderId){
+            foreach ($detail as $k=>$v) {
+                $productIdList[]=$k;
+                $orderDetailValue[$k]=['order_id'=>$orderId,'product'=>$v['product'],'amount'=>$v['amount'],];
+                $stockDetailValue[$k]=['order_id'=>$orderId,'product'=>$v['product'],'amount'=>-$v['amount'],'create_time_unix'=>$time];
+                exeNew('update product_tbl set stock=stock-'.$v['amount'].' where product_id='.$v['product']);
+            }
+            pdoBatchInsert('order_detail_tbl',$orderDetailValue);
+            pdoBatchInsert('stock_detail_tbl',$stockDetailValue);
+        }
+        echo ajaxBack($orderId);
+        pdoCommit();
+    }catch(PDOException $e){
+        mylog($e->getMessage());
+        pdoRollBack();
+        echo ajaxBack(null,9,'数据库错误');
     }
-    $pruductInf=pdoQuery('product_tbl',['product_id','default_price'],['product'=>])
+
+//    $pruductInf=pdoQuery('product_tbl',['product_id','default_price'],['product'=>$productIdList],null);
 
 
 
     verifyPms('order_add');
 
     mylog(json_encode($data,true));
+}
+function order_list($data){
+    $back=getList('order_view','order_view',$data);
+    echo ajaxBack($back);
+}
+function order_detail($data){
+    $id=$data['id'];
+    $orderInf=pdoQuery('order_view',null,['order_id'=>$id],'limit 1');
+    $orderInf->setFetchMode(PDO::FETCH_ASSOC);
+    $orderInf=$orderInf->fetch();
+    $orderDetail=pdoQuery('order_detail_view',null,['order_id'=>$id],null);
+    $orderDetail->setFetchMode(PDO::FETCH_ASSOC);
+    $orderDetail=$orderDetail->fetchAll();
+    echo ajaxBack(['inf'=>$orderInf,'detail'=>$orderDetail]);
 }
 
 

@@ -87,6 +87,7 @@
             <td>品名</td>
             <td>序列号</td>
             <td>数量</td>
+            <td>单价</td>
             <td>操作</td>
         </tr>
         </thead>
@@ -104,13 +105,17 @@
                 </button>
             </td>
             <td>
+                ￥<span class="default-price"></span>
+            </td>
+            <td>
                 <button class="button remove" data-type="remove">移除</button>
             </td>
         </tr>
         </tbody>
         <tfoot>
         <tr>
-            <td colspan="4">
+            <td colspan="5">
+                总计：￥<span class="total-price"></span>
                 <button class="button" data-type="submit">提交订单</button>
             </td>
         </tr>
@@ -196,8 +201,9 @@ function registEvent() {
                 if (preOrderObj.detail[id]) {
                     preOrderObj.detail[id].amount++;
                 } else {
-                    preOrderObj.detail[id] = {product: id, amount: 1}
+                    preOrderObj.detail[id] = {product: id,price:prepareList[id].default_price, amount: 1}
                 }
+                calcPreOrderTotalPrice();
                 setPreOrderTr(id);
                 $('.pre-order-table').show();
                 break;
@@ -205,10 +211,12 @@ function registEvent() {
                 console.log('remove');
                 delete preOrderObj.detail[id];
                 $(this).parents('tr').remove();
+                calcPreOrderTotalPrice();
                 var count = 0;
                 for (var i in preOrderObj.detail) {
                     count++;
                 }
+
                 if (0 == count) {
                     console.log(preOrderObj.detail);
                     $('.pre-order-table').hide();
@@ -232,6 +240,7 @@ function registEvent() {
                     var number = parseInt($(v).val());
                     preOrderObj.detail[id].amount = number;
                 });
+                calcPreOrderTotalPrice();
                 console.log(preOrderObj);
                 submitOrder();
                 break;
@@ -249,6 +258,7 @@ function registEvent() {
         var id = $(this).attr('id').slice(3);
         var number = $(this).val();
         preOrderObj.detail[id].amount = number;
+        calcPreOrderTotalPrice();
     });
     $(document).on('change', '.category-select', function () {
         var id = this.value;
@@ -313,6 +323,9 @@ function setPreOrderTr(productId) {
     trElement.find('.minus').attr('id', 'min' + productId);
     trElement.find('.plus').attr('id', 'pls' + productId);
     trElement.find('.remove').attr('id', 'rmv' + productId);
+    trElement.find('.default-price').text(preOrderObj.detail[productId].price);
+    trElement.find('.sub-total-price').text((preOrderObj.detail[productId].amount*preOrderObj.detail[productId].price).toFixed(2));
+
     $('.pre-order').append(trElement);
 
 //        console.log(trElement);
@@ -426,7 +439,7 @@ function initCustomer() {
     selectElement.removeClass('category-select');
     selectElement.addClass('customer-select');
     selectElement.append('<option value="0" disabled="true" selected>请选择客户</option>');
-    ajaxPost('customer_list', {page: 0, number: 50}, function (back) {
+    ajaxPost('customer_list', {page: 0, number: 20,order:'desc',orderby:'customer_id'}, function (back) {
         var backValue = backHandle(back);
         $.each(backValue.list, function (k, v) {
             var optionElement = categoryDisplayElementsTemplate('.option-template');
@@ -436,6 +449,13 @@ function initCustomer() {
         });
         $('.customer-container').append(selectElement);
     })
+}
+function calcPreOrderTotalPrice(){
+    preOrderObj.total_price=0;
+    $.each(preOrderObj.detail,function(k,v){
+        preOrderObj.total_price+= v.amount* v.price;
+    });
+    $('.total-price').text(preOrderObj.total_price.toFixed(2));
 }
 function scannerReady(){
     $('.sn-search-text').attr('onkeypress','confirmFunc(event)')

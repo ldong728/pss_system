@@ -6,6 +6,8 @@ var TableController = {
     methodName:null,
     handleCallback:null,
     filter:{
+        order:null,
+        orderby:null,
         where:{},
         page:0
     },
@@ -13,6 +15,11 @@ var TableController = {
 
     setPage:function(page){
         this.filter.page=page;
+    },
+    setOrder:function(orderByField,asc){
+      var order=asc?'asc':'desc';
+        this.filter.orderby=orderByField;
+        this.filter.order=order;
     },
     setNumber:function(number){
       this.filter.number=number;

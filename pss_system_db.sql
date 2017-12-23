@@ -3,8 +3,8 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 2017-12-21 16:14:16
--- 服务器版本： 10.1.9-MariaDB
+-- Generation Time: 2017-12-23 23:41:13
+-- 服务器版本： 10.1.9-MariaDB-log
 -- PHP Version: 5.6.15
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -66,7 +66,8 @@ CREATE TABLE `customer_tbl` (
 --
 
 INSERT INTO `customer_tbl` (`customer_id`, `customer_name`, `customer_tel`, `customer_address`) VALUES
-(1, '王大锤', '13566603839', '测试地址abc大的');
+(1, '王大锤', '13566603839', '测试地址abc大的'),
+(2, '孔连顺', '14544565532', '孔连顺的联系地址');
 
 -- --------------------------------------------------------
 
@@ -115,19 +116,88 @@ CREATE TABLE `op_pms_view` (
 -- --------------------------------------------------------
 
 --
+-- 表的结构 `order_detail_tbl`
+--
+
+CREATE TABLE `order_detail_tbl` (
+  `order_detail_id` int(11) NOT NULL,
+  `order_id` int(11) NOT NULL,
+  `product` int(11) NOT NULL,
+  `amount` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- 转存表中的数据 `order_detail_tbl`
+--
+
+INSERT INTO `order_detail_tbl` (`order_detail_id`, `order_id`, `product`, `amount`) VALUES
+(1, 2, 2, 3),
+(2, 2, 3, 3),
+(3, 3, 2, 2),
+(4, 3, 3, 1);
+
+-- --------------------------------------------------------
+
+--
+-- 替换视图以便查看 `order_detail_view`
+--
+CREATE TABLE `order_detail_view` (
+`order_detail_id` int(11)
+,`order_id` int(11)
+,`product` int(11)
+,`amount` int(11)
+,`product_name` varchar(40)
+,`product_sn` varchar(32)
+,`price` decimal(8,2)
+,`unit` varchar(3)
+);
+
+-- --------------------------------------------------------
+
+--
 -- 表的结构 `order_tbl`
 --
 
 CREATE TABLE `order_tbl` (
   `order_id` int(11) NOT NULL,
-  `custom` int(11) NOT NULL DEFAULT '0',
+  `customer` int(11) NOT NULL DEFAULT '0',
   `custom_info` varchar(60) DEFAULT NULL,
   `total_fee` decimal(8,2) NOT NULL,
   `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `create_time_unix` int(11) NOT NULL,
   `creator` int(11) NOT NULL,
-  `remark` varchar(100) NOT NULL
+  `remark` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- 转存表中的数据 `order_tbl`
+--
+
+INSERT INTO `order_tbl` (`order_id`, `customer`, `custom_info`, `total_fee`, `create_time`, `create_time_unix`, `creator`, `remark`) VALUES
+(2, 1, NULL, '0.00', '2017-12-22 15:54:42', 1513958082, -1, NULL),
+(3, 2, NULL, '0.00', '2017-12-23 03:22:53', 1513999373, -1, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- 替换视图以便查看 `order_view`
+--
+CREATE TABLE `order_view` (
+`order_id` int(11)
+,`customer` int(11)
+,`custom_info` varchar(60)
+,`total_fee` decimal(8,2)
+,`create_time` timestamp
+,`create_time_unix` int(11)
+,`creator` int(11)
+,`remark` varchar(100)
+,`customer_id` int(11)
+,`customer_name` varchar(7)
+,`customer_tel` varchar(12)
+,`customer_address` varchar(40)
+,`operator` varchar(20)
+,`operator_nickname` varchar(14)
+);
 
 -- --------------------------------------------------------
 
@@ -180,6 +250,7 @@ CREATE TABLE `product_tbl` (
   `name` varchar(40) NOT NULL,
   `sn` varchar(32) NOT NULL,
   `brand` int(11) DEFAULT NULL,
+  `img` varchar(50) DEFAULT NULL,
   `description` varchar(60) NOT NULL,
   `default_price` decimal(8,2) DEFAULT NULL,
   `unit` varchar(3) NOT NULL DEFAULT '',
@@ -190,9 +261,10 @@ CREATE TABLE `product_tbl` (
 -- 转存表中的数据 `product_tbl`
 --
 
-INSERT INTO `product_tbl` (`product_id`, `category`, `name`, `sn`, `brand`, `description`, `default_price`, `unit`, `stock`) VALUES
-(2, 13, '测试商品123', '123123321', 0, '这里是描述', '2345.00', '个', 2),
-(3, 13, '新测试', '6534534', NULL, '啊手动阀手动阀', '12332.00', '个', 1);
+INSERT INTO `product_tbl` (`product_id`, `category`, `name`, `sn`, `brand`, `img`, `description`, `default_price`, `unit`, `stock`) VALUES
+(2, 13, '测试商品123', '123123321', 0, NULL, '这里是描述', '2345.00', '个', 45),
+(3, 13, '新测试', '6534534', NULL, NULL, '啊手动阀手动阀', '12332.00', '个', 46),
+(4, 5, '某品牌吊顶', '44545332', NULL, '../files/56e8a9c7f16ef98ec724ec50487faa7f.jpg', '哈哈哈哈哈哈', '230.00', '平方', 20);
 
 -- --------------------------------------------------------
 
@@ -241,7 +313,8 @@ CREATE TABLE `purchase_detail_tbl` (
 
 INSERT INTO `purchase_detail_tbl` (`purchase_detail_id`, `purchase`, `product`, `amount`) VALUES
 (17, 11, '2', 2),
-(18, 11, '3', 1);
+(18, 11, '3', 1),
+(19, 12, '4', 20);
 
 -- --------------------------------------------------------
 
@@ -255,6 +328,7 @@ CREATE TABLE `purchase_detail_view` (
 ,`amount` int(11)
 ,`product_name` varchar(40)
 ,`product_sn` varchar(32)
+,`unit` varchar(3)
 );
 
 -- --------------------------------------------------------
@@ -277,7 +351,8 @@ CREATE TABLE `purchase_tbl` (
 --
 
 INSERT INTO `purchase_tbl` (`purchase_id`, `provider`, `total_price`, `create_time`, `create_time_unix`, `creator`) VALUES
-(11, 1, '0.00', '2017-12-20 09:59:35', 1513763975, -1);
+(11, 1, '0.00', '2017-12-20 09:59:35', 1513763975, -1),
+(12, 1, '0.00', '2017-12-23 10:13:58', 1514024038, -1);
 
 -- --------------------------------------------------------
 
@@ -303,7 +378,7 @@ CREATE TABLE `purchase_view` (
 
 CREATE TABLE `stock_detail_tbl` (
   `stock_id` int(11) NOT NULL,
-  `order` int(11) NOT NULL DEFAULT '0',
+  `order_id` int(11) NOT NULL DEFAULT '0',
   `purchase` int(11) NOT NULL DEFAULT '0',
   `product` varchar(32) NOT NULL,
   `amount` int(11) NOT NULL,
@@ -315,9 +390,12 @@ CREATE TABLE `stock_detail_tbl` (
 -- 转存表中的数据 `stock_detail_tbl`
 --
 
-INSERT INTO `stock_detail_tbl` (`stock_id`, `order`, `purchase`, `product`, `amount`, `create_time`, `create_time_unix`) VALUES
-(10, 0, 11, '2', 2, '2017-12-20 09:59:35', 1513763975),
-(11, 0, 11, '3', 1, '2017-12-20 09:59:35', 1513763975);
+INSERT INTO `stock_detail_tbl` (`stock_id`, `order_id`, `purchase`, `product`, `amount`, `create_time`, `create_time_unix`) VALUES
+(12, 2, 0, '2', -3, '2017-12-22 15:54:42', 1513958082),
+(13, 2, 0, '3', -3, '2017-12-22 15:54:42', 1513958082),
+(14, 3, 0, '2', -2, '2017-12-23 03:22:53', 1513999373),
+(15, 3, 0, '3', -1, '2017-12-23 03:22:53', 1513999373),
+(16, 0, 12, '4', 20, '2017-12-23 10:13:58', 1514024038);
 
 -- --------------------------------------------------------
 
@@ -349,7 +427,9 @@ INSERT INTO `sub_menu_tbl` (`id`, `parent_id`, `key_word`, `name`) VALUES
 (16, 111, 'purchase_detail', '进货详情'),
 (17, 113, 'order_add', '销售录入'),
 (18, 112, 'customer_list', '客户列表'),
-(19, 112, 'customer_edit', '新建客户');
+(19, 112, 'customer_edit', '新建客户'),
+(20, 113, 'order_detail', '销售详情'),
+(21, 113, 'order_list', '销售列表');
 
 -- --------------------------------------------------------
 
@@ -377,6 +457,24 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 -- --------------------------------------------------------
 
 --
+-- 视图结构 `order_detail_view`
+--
+DROP TABLE IF EXISTS `order_detail_view`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `order_detail_view`  AS  select `a`.`order_detail_id` AS `order_detail_id`,`a`.`order_id` AS `order_id`,`a`.`product` AS `product`,`a`.`amount` AS `amount`,`b`.`name` AS `product_name`,`b`.`sn` AS `product_sn`,`b`.`default_price` AS `price`,`b`.`unit` AS `unit` from (`order_detail_tbl` `a` left join `product_tbl` `b` on((`a`.`product` = `b`.`product_id`))) ;
+
+-- --------------------------------------------------------
+
+--
+-- 视图结构 `order_view`
+--
+DROP TABLE IF EXISTS `order_view`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `order_view`  AS  select `a`.`order_id` AS `order_id`,`a`.`customer` AS `customer`,`a`.`custom_info` AS `custom_info`,`a`.`total_fee` AS `total_fee`,`a`.`create_time` AS `create_time`,`a`.`create_time_unix` AS `create_time_unix`,`a`.`creator` AS `creator`,`a`.`remark` AS `remark`,`b`.`customer_id` AS `customer_id`,`b`.`customer_name` AS `customer_name`,`b`.`customer_tel` AS `customer_tel`,`b`.`customer_address` AS `customer_address`,`c`.`name` AS `operator`,`c`.`nick_name` AS `operator_nickname` from ((`order_tbl` `a` left join `customer_tbl` `b` on((`a`.`customer` = `b`.`customer_id`))) left join `operator_tbl` `c` on((`a`.`creator` = `c`.`id`))) ;
+
+-- --------------------------------------------------------
+
+--
 -- 视图结构 `pms_view`
 --
 DROP TABLE IF EXISTS `pms_view`;
@@ -390,7 +488,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `purchase_detail_view`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `purchase_detail_view`  AS  select `a`.`purchase_detail_id` AS `purchase_detail_id`,`a`.`purchase` AS `purchase`,`a`.`product` AS `product`,`a`.`amount` AS `amount`,`b`.`name` AS `product_name`,`b`.`sn` AS `product_sn` from (`purchase_detail_tbl` `a` left join `product_tbl` `b` on((`a`.`product` = `b`.`product_id`))) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `purchase_detail_view`  AS  select `a`.`purchase_detail_id` AS `purchase_detail_id`,`a`.`purchase` AS `purchase`,`a`.`product` AS `product`,`a`.`amount` AS `amount`,`b`.`name` AS `product_name`,`b`.`sn` AS `product_sn`,`b`.`unit` AS `unit` from (`purchase_detail_tbl` `a` left join `product_tbl` `b` on((`a`.`product` = `b`.`product_id`))) ;
 
 -- --------------------------------------------------------
 
@@ -438,6 +536,18 @@ ALTER TABLE `operator_tbl`
 --
 ALTER TABLE `op_pms_tbl`
   ADD PRIMARY KEY (`o_id`,`pms_id`);
+
+--
+-- Indexes for table `order_detail_tbl`
+--
+ALTER TABLE `order_detail_tbl`
+  ADD PRIMARY KEY (`order_detail_id`);
+
+--
+-- Indexes for table `order_tbl`
+--
+ALTER TABLE `order_tbl`
+  ADD PRIMARY KEY (`order_id`);
 
 --
 -- Indexes for table `pms_tbl`
@@ -496,22 +606,32 @@ ALTER TABLE `category_tbl`
 -- 使用表AUTO_INCREMENT `customer_tbl`
 --
 ALTER TABLE `customer_tbl`
-  MODIFY `customer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `customer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- 使用表AUTO_INCREMENT `operator_tbl`
 --
 ALTER TABLE `operator_tbl`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
+-- 使用表AUTO_INCREMENT `order_detail_tbl`
+--
+ALTER TABLE `order_detail_tbl`
+  MODIFY `order_detail_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+--
+-- 使用表AUTO_INCREMENT `order_tbl`
+--
+ALTER TABLE `order_tbl`
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
 -- 使用表AUTO_INCREMENT `pms_tbl`
 --
 ALTER TABLE `pms_tbl`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=115;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=114;
 --
 -- 使用表AUTO_INCREMENT `product_tbl`
 --
 ALTER TABLE `product_tbl`
-  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- 使用表AUTO_INCREMENT `provider_tbl`
 --
@@ -521,22 +641,22 @@ ALTER TABLE `provider_tbl`
 -- 使用表AUTO_INCREMENT `purchase_detail_tbl`
 --
 ALTER TABLE `purchase_detail_tbl`
-  MODIFY `purchase_detail_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `purchase_detail_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 --
 -- 使用表AUTO_INCREMENT `purchase_tbl`
 --
 ALTER TABLE `purchase_tbl`
-  MODIFY `purchase_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `purchase_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 --
 -- 使用表AUTO_INCREMENT `stock_detail_tbl`
 --
 ALTER TABLE `stock_detail_tbl`
-  MODIFY `stock_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `stock_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 --
 -- 使用表AUTO_INCREMENT `sub_menu_tbl`
 --
 ALTER TABLE `sub_menu_tbl`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
