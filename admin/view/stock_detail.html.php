@@ -79,7 +79,7 @@
             $('input.input').each(function(k,v){
                 if($(v).val()){
                     var field=$(v).data('field');
-                    productInf[field]=$(v).val();
+                    productInf[k+10]=field+' like "%'+$(v).val()+'%"';
                 }
             });
             getProductInf(productInf);
@@ -127,7 +127,7 @@
                 $(value).text(v[$(value).data('field')]);
                 $(value).removeAttr('data-field');
             });
-            element.find('.type').text(v['order_id']?'销售':'入库');
+            element.find('.type').text(v['order_id']>0?'销售':'入库');
             element.find('.order-purchase-id').text(v['order_id']||v['purchase']);
 //            element.find('.print').attr('id', 'prt'+v.order_id);
 //            element.find('.detail').attr('id', 'dtl'+v.order_id);
