@@ -57,6 +57,9 @@
             <td data-field="unit"></td>
         </tr>
         </tbody>
+        <tfoot>
+            <tr><td colspan="5"><button class="button print">打印销售单</button></td> </tr>
+        </tfoot>
 
     </table>
 
@@ -70,11 +73,16 @@
         registEvent();
         if(orderId)getOrderDetail(orderId);
     });
-
     function registEvent(){
         $(document).on('click','.order-id-search',function(){
             var id=$('.order-id-input').val();
+            orderId=id;
             getOrderDetail(id);
+        });
+        $(document).on('click','.print',function(){
+            ajaxPost('order_print',{id:orderId},function(back){
+                $(back).jqprint({debug: false,importCSS:true});
+            });
         });
     }
     function getOrderDetail(orderId){

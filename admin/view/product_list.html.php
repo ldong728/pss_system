@@ -25,6 +25,7 @@
             <td>
                 <button class="button edit" data-type="edit">编辑</button>
                 <button class="button delete" data-type="delete">删除</button>
+                <button class="button stock" data-type="stock">库存明细</button>
             </td>
         </tr>
     </table>
@@ -82,6 +83,10 @@
                     var text=$('.name-search-text').val();
                     TableController.filter.where[0]='name like "%'+text+'%"';
                     TableController.getList(handleTableContent);
+                    break;
+                case 'stock':
+                    var href=getHref('stock_detail');
+                    location.href=href+'&product_id='+id;
                     break;
                 default :
                     break;
@@ -166,6 +171,7 @@
             });
             element.find('.edit').attr('id', 'edt'+v.product_id);
             element.find('.delete').attr('id', 'del'+v.product_id);
+            element.find('.stock').attr('id','stk'+ v.product_id);
             $('.product-table').append(element);
         });
     }

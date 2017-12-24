@@ -82,6 +82,11 @@ function product_edit(){
     }
     printAdminView('product_edit.html.php',$modeName);
 }
+function stock_detail(){
+    global $productId;
+    $productId=isset($_GET['product_id'])?$_GET['product_id']:0;
+    printAdminView('stock_detail.html.php','库存明细');
+}
 function purchase_add(){
     printAdminView('purchase_add.html.php','进货录入');
 }
@@ -109,6 +114,9 @@ function customer_edit(){
         $modeName='新建用户';
     }
     printAdminView('customer_edit.html.php',$modeName);
+}
+function order_list(){
+    printAdminView('order_list.html.php','订单列表');
 }
 function order_add(){
     printAdminView('order_add.html.php','订单录入');

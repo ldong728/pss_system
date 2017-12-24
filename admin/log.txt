@@ -1,26 +1,21 @@
-2017.12.23.11:26:36:C:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT count(*) as count FROM customer_tbl order by customer_id desc
-2017.12.23.11:26:36:C:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT *  FROM customer_tbl order by customer_id desc limit 0,20
-2017.12.23.18:10:09:C:\xampp\htdocs\pss_system\admin\upload.class.php128:C:\xampp\tmp\phpD22E.tmp
-2017.12.23.18:10:09:C:\xampp\htdocs\pss_system\admin\upload.class.php129:../files/56e8a9c7f16ef98ec724ec50487faa7f.jpg
-2017.12.23.18:10:09:C:\xampp\htdocs\pss_system\admin\upload.class.php131:save error
-2017.12.23.18:11:30:C:\xampp\htdocs\pss_system\admin\upload.class.php128:C:\xampp\tmp\phpF2F.tmp
-2017.12.23.18:11:30:C:\xampp\htdocs\pss_system\admin\upload.class.php129:../files/56e8a9c7f16ef98ec724ec50487faa7f.jpg
-2017.12.23.18:13:13:C:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT count(*) as count FROM product_tbl
-2017.12.23.18:13:13:C:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT *  FROM product_tbl  limit 0,12
-2017.12.23.18:13:22:C:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT count(*) as count FROM provider_tbl
-2017.12.23.18:13:22:C:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT *  FROM provider_tbl  limit 0,12
-2017.12.23.18:13:24:C:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT count(*) as count FROM product_tbl WHERE category in("5","4")
-2017.12.23.18:13:24:C:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT *  FROM product_tbl WHERE category in("5","4")  limit 0,12
-2017.12.23.18:13:59:C:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT count(*) as count FROM provider_tbl
-2017.12.23.18:13:59:C:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT *  FROM provider_tbl  limit 0,12
-2017.12.23.18:14:05:C:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT count(*) as count FROM purchase_tbl
-2017.12.23.18:14:05:C:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT *  FROM purchase_view  limit 0,12
-2017.12.23.18:14:11:C:\xampp\htdocs\pss_system\admin\ajax_request.php163:12
-2017.12.23.18:14:16:C:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT count(*) as count FROM provider_tbl
-2017.12.23.18:14:16:C:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT *  FROM provider_tbl  limit 0,12
-2017.12.23.18:14:31:C:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT count(*) as count FROM customer_tbl order by customer_id desc
-2017.12.23.18:14:31:C:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT *  FROM customer_tbl order by customer_id desc limit 0,20
-2017.12.23.18:16:52:C:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT count(*) as count FROM customer_tbl order by customer_id desc
-2017.12.23.18:16:52:C:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT *  FROM customer_tbl order by customer_id desc limit 0,20
-2017.12.23.19:25:44:C:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT count(*) as count FROM customer_tbl order by customer_id desc
-2017.12.23.19:25:44:C:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT *  FROM customer_tbl order by customer_id desc limit 0,20
+2017.12.24.16:42:54:D:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT *  FROM product_tbl WHERE sn="6534534" AND name="新测试" limit 1
+2017.12.24.16:42:54:D:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT count(*) as count FROM stock_detail_view WHERE product="3"
+2017.12.24.16:42:54:D:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT *  FROM stock_detail_view WHERE product="3"  limit 0,12
+2017.12.24.16:44:32:D:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT *  FROM product_tbl WHERE product_id="3" limit 1
+2017.12.24.16:44:32:D:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT count(*) as count FROM stock_detail_view WHERE product="3"
+2017.12.24.16:44:32:D:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT *  FROM stock_detail_view WHERE product="3"  limit 0,12
+2017.12.24.16:44:37:D:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT *  FROM product_tbl WHERE sn="6534534" AND name="新测试" limit 1
+2017.12.24.16:44:37:D:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT count(*) as count FROM stock_detail_view WHERE product="3"
+2017.12.24.16:44:37:D:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT *  FROM stock_detail_view WHERE product="3"  limit 0,12
+2017.12.24.16:45:19:D:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT *  FROM product_tbl WHERE product_id="3" limit 1
+2017.12.24.16:45:19:D:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT count(*) as count FROM stock_detail_view WHERE product="3"
+2017.12.24.16:45:19:D:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT *  FROM stock_detail_view WHERE product="3"  limit 0,12
+2017.12.24.16:45:24:D:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT *  FROM product_tbl WHERE sn="6534534" AND name="新测试" limit 1
+2017.12.24.16:45:24:D:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT count(*) as count FROM stock_detail_view WHERE product="3"
+2017.12.24.16:45:24:D:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT *  FROM stock_detail_view WHERE product="3"  limit 0,12
+2017.12.24.16:46:06:D:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT *  FROM product_tbl WHERE product_id="3" limit 1
+2017.12.24.16:46:06:D:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT count(*) as count FROM stock_detail_view WHERE product="3"
+2017.12.24.16:46:06:D:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT *  FROM stock_detail_view WHERE product="3"  limit 0,12
+2017.12.24.16:46:13:D:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT *  FROM product_tbl WHERE sn="6534534" AND name="新测试" limit 1
+2017.12.24.16:46:13:D:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT count(*) as count FROM stock_detail_view WHERE  create_time>"2017-12-23 00:00:00" AND product="3"
+2017.12.24.16:46:13:D:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT *  FROM stock_detail_view WHERE  create_time>"2017-12-23 00:00:00" AND product="3"  limit 0,12

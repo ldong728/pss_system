@@ -3,8 +3,8 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 2017-12-23 23:41:13
--- 服务器版本： 10.1.9-MariaDB-log
+-- Generation Time: 2017-12-24 16:46:42
+-- 服务器版本： 10.1.9-MariaDB
 -- PHP Version: 5.6.15
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -134,7 +134,9 @@ INSERT INTO `order_detail_tbl` (`order_detail_id`, `order_id`, `product`, `amoun
 (1, 2, 2, 3),
 (2, 2, 3, 3),
 (3, 3, 2, 2),
-(4, 3, 3, 1);
+(4, 3, 3, 1),
+(5, 4, 2, 1),
+(6, 4, 3, 3);
 
 -- --------------------------------------------------------
 
@@ -175,7 +177,8 @@ CREATE TABLE `order_tbl` (
 
 INSERT INTO `order_tbl` (`order_id`, `customer`, `custom_info`, `total_fee`, `create_time`, `create_time_unix`, `creator`, `remark`) VALUES
 (2, 1, NULL, '0.00', '2017-12-22 15:54:42', 1513958082, -1, NULL),
-(3, 2, NULL, '0.00', '2017-12-23 03:22:53', 1513999373, -1, NULL);
+(3, 2, NULL, '0.00', '2017-12-23 03:22:53', 1513999373, -1, NULL),
+(4, 2, NULL, '39341.00', '2017-12-24 03:21:12', 1514085672, -1, NULL);
 
 -- --------------------------------------------------------
 
@@ -262,8 +265,8 @@ CREATE TABLE `product_tbl` (
 --
 
 INSERT INTO `product_tbl` (`product_id`, `category`, `name`, `sn`, `brand`, `img`, `description`, `default_price`, `unit`, `stock`) VALUES
-(2, 13, '测试商品123', '123123321', 0, NULL, '这里是描述', '2345.00', '个', 45),
-(3, 13, '新测试', '6534534', NULL, NULL, '啊手动阀手动阀', '12332.00', '个', 46),
+(2, 13, '测试商品123', '123123321', 0, NULL, '这里是描述', '2345.00', '个', 44),
+(3, 13, '新测试', '6534534', NULL, NULL, '啊手动阀手动阀', '12332.00', '个', 43),
 (4, 5, '某品牌吊顶', '44545332', NULL, '../files/56e8a9c7f16ef98ec724ec50487faa7f.jpg', '哈哈哈哈哈哈', '230.00', '平方', 20);
 
 -- --------------------------------------------------------
@@ -328,6 +331,7 @@ CREATE TABLE `purchase_detail_view` (
 ,`amount` int(11)
 ,`product_name` varchar(40)
 ,`product_sn` varchar(32)
+,`price` decimal(8,2)
 ,`unit` varchar(3)
 );
 
@@ -395,7 +399,25 @@ INSERT INTO `stock_detail_tbl` (`stock_id`, `order_id`, `purchase`, `product`, `
 (13, 2, 0, '3', -3, '2017-12-22 15:54:42', 1513958082),
 (14, 3, 0, '2', -2, '2017-12-23 03:22:53', 1513999373),
 (15, 3, 0, '3', -1, '2017-12-23 03:22:53', 1513999373),
-(16, 0, 12, '4', 20, '2017-12-23 10:13:58', 1514024038);
+(16, 0, 12, '4', 20, '2017-12-23 10:13:58', 1514024038),
+(17, 4, 0, '2', -1, '2017-12-24 03:21:12', 1514085672),
+(18, 4, 0, '3', -3, '2017-12-24 03:21:12', 1514085672);
+
+-- --------------------------------------------------------
+
+--
+-- 替换视图以便查看 `stock_detail_view`
+--
+CREATE TABLE `stock_detail_view` (
+`stock_id` int(11)
+,`order_id` int(11)
+,`purchase` int(11)
+,`product` varchar(32)
+,`amount` int(11)
+,`create_time` timestamp
+,`create_time_unix` int(11)
+,`sn` varchar(32)
+);
 
 -- --------------------------------------------------------
 
@@ -429,7 +451,8 @@ INSERT INTO `sub_menu_tbl` (`id`, `parent_id`, `key_word`, `name`) VALUES
 (18, 112, 'customer_list', '客户列表'),
 (19, 112, 'customer_edit', '新建客户'),
 (20, 113, 'order_detail', '销售详情'),
-(21, 113, 'order_list', '销售列表');
+(21, 113, 'order_list', '销售列表'),
+(22, 111, 'stock_detail', '库存明细');
 
 -- --------------------------------------------------------
 
@@ -488,7 +511,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `purchase_detail_view`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `purchase_detail_view`  AS  select `a`.`purchase_detail_id` AS `purchase_detail_id`,`a`.`purchase` AS `purchase`,`a`.`product` AS `product`,`a`.`amount` AS `amount`,`b`.`name` AS `product_name`,`b`.`sn` AS `product_sn`,`b`.`unit` AS `unit` from (`purchase_detail_tbl` `a` left join `product_tbl` `b` on((`a`.`product` = `b`.`product_id`))) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `purchase_detail_view`  AS  select `a`.`purchase_detail_id` AS `purchase_detail_id`,`a`.`purchase` AS `purchase`,`a`.`product` AS `product`,`a`.`amount` AS `amount`,`b`.`name` AS `product_name`,`b`.`sn` AS `product_sn`,`b`.`default_price` AS `price`,`b`.`unit` AS `unit` from (`purchase_detail_tbl` `a` left join `product_tbl` `b` on((`a`.`product` = `b`.`product_id`))) ;
 
 -- --------------------------------------------------------
 
@@ -498,6 +521,15 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 DROP TABLE IF EXISTS `purchase_view`;
 
 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `purchase_view`  AS  select `a`.`purchase_id` AS `purchase_id`,`a`.`provider` AS `provider`,`a`.`total_price` AS `total_price`,`a`.`create_time` AS `create_time`,`a`.`create_time_unix` AS `create_time_unix`,`a`.`creator` AS `creator`,`b`.`unit` AS `unit`,`c`.`name` AS `operator_name` from ((`purchase_tbl` `a` left join `provider_tbl` `b` on((`a`.`provider` = `b`.`provider_id`))) left join `operator_tbl` `c` on((`a`.`creator` = `c`.`id`))) ;
+
+-- --------------------------------------------------------
+
+--
+-- 视图结构 `stock_detail_view`
+--
+DROP TABLE IF EXISTS `stock_detail_view`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `stock_detail_view`  AS  select `a`.`stock_id` AS `stock_id`,`a`.`order_id` AS `order_id`,`a`.`purchase` AS `purchase`,`a`.`product` AS `product`,`a`.`amount` AS `amount`,`a`.`create_time` AS `create_time`,`a`.`create_time_unix` AS `create_time_unix`,`b`.`sn` AS `sn` from (`stock_detail_tbl` `a` left join `product_tbl` `b` on((`a`.`product` = `b`.`product_id`))) ;
 
 -- --------------------------------------------------------
 
@@ -616,12 +648,12 @@ ALTER TABLE `operator_tbl`
 -- 使用表AUTO_INCREMENT `order_detail_tbl`
 --
 ALTER TABLE `order_detail_tbl`
-  MODIFY `order_detail_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `order_detail_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- 使用表AUTO_INCREMENT `order_tbl`
 --
 ALTER TABLE `order_tbl`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- 使用表AUTO_INCREMENT `pms_tbl`
 --
@@ -651,12 +683,12 @@ ALTER TABLE `purchase_tbl`
 -- 使用表AUTO_INCREMENT `stock_detail_tbl`
 --
 ALTER TABLE `stock_detail_tbl`
-  MODIFY `stock_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `stock_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 --
 -- 使用表AUTO_INCREMENT `sub_menu_tbl`
 --
 ALTER TABLE `sub_menu_tbl`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

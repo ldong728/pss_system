@@ -83,9 +83,22 @@ function category_list(){
     }
     echo ajaxBack($back);
 }
+function product_inf($data){
+    $inf=pdoQueryNew('product_tbl',null,$data,'limit 1')->fetch();
+    if($inf){
+        echo ajaxBack($inf);
+    }else{
+        echo ajaxBack(null,1234,'无商品');
+    }
+
+}
 function product_list($data){
 //    verifyPms(['product_list','purchase_add']);
     $back=getList('product_tbl','product_tbl',$data);
+    echo ajaxBack($back);
+}
+function stock_detail($data){
+    $back=getList('stock_detail_view','stock_detail_view',$data);
     echo ajaxBack($back);
 }
 function delete_category($data){
@@ -175,6 +188,7 @@ function customer_detail($data){
     }
 }
 function order_add($data){
+    verifyPms('order_add');
     $customer=$data['customer'];
     $detail=$data['detail'];
     $totalPrice=$data['total_price'];
@@ -232,6 +246,18 @@ function order_detail($data){
     $orderDetail->setFetchMode(PDO::FETCH_ASSOC);
     $orderDetail=$orderDetail->fetchAll();
     echo ajaxBack(['inf'=>$orderInf,'detail'=>$orderDetail]);
+}
+function order_print($data){
+    global $mypath;
+    $id=$data['id'];
+    $orderInf=pdoQuery('order_view',null,['order_id'=>$id],'limit 1')->fetch();
+    $orderDetail=pdoQuery('order_detail_view',null,['order_id'=>$id],null)->fetchAll();
+    if($orderInf){
+        include 'view/module/order_print_template.html.php';
+    }else{
+        echo 'error';
+    }
+
 }
 
 
