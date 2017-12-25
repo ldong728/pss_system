@@ -10,10 +10,10 @@ body
     margin: 0mm;  /* this affects the margin on the content before sending to printer */
 }
 .info-container{
-    margin-top: 20px;
+    margin-top: 15px;
 }
 .detail-container{
-    margin-top: 20px;
+    margin-top: 15px;
 }
 
 table.info{
@@ -31,12 +31,12 @@ table.info{
 
 table.detail{
     width: 100%;
-    font-size: 18pt;
-    border: solid 1px #000000;
+    font-size: 11pt;
+    border: dotted 1px #000000;
     border-collapse: collapse;
 }
 .detail tr {
-    height: 25pt;
+    height: 18pt;
     border: #000000 solid 1px;
 }
 .detail th {
@@ -53,6 +53,6 @@ table.detail{
 
 .main-title{
     margin-top: 30px;
-    font-size: xx-large;
+    font-size: x-large;
     text-align: center;
 }

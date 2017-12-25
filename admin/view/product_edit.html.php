@@ -68,6 +68,7 @@
             });
             $(document).on('change','.category-select',function(){
                 var id=this.value;
+                productInf.category=id;
                 $(this).nextAll('select').remove();
                 if(id>0){
                     var element=getSubCategoryElment(id);
