@@ -12,46 +12,6 @@
         min-width: 30px;
     }
 
-    .pop-up {
-        position: absolute;
-        left: 15%;
-        top: 15%;
-        width: 70%;
-        height: 80%;
-        /*padding-top: 5px;*/
-        border-radius: 4px;
-        border: solid 1px #ccc;
-        background-color: #fff;
-    }
-    .pop-up .pop-up-head{
-        background: #ccc;
-        height: 25px;
-        line-height: 25px;
-        padding-left: 5px;
-        font-size: 15px;
-        font-weight: 600;
-    }
-    .pop-up .table-container {
-        box-sizing: border-box;
-        overflow-y: scroll;
-        /*padding-left: 5px;*/
-        height: 90%;
-    }
-    .pop-up .table-container table td{
-        background: #eee;
-    }
-
-    .pop-up .button-container {
-        box-sizing: border-box;
-        text-align: center;
-        height: 90%;
-    }
-
-    .pop-up .search-button {
-        min-height: 20px;
-        height: 23px;
-        margin-left: 4px;;
-    }
 </style>
 <div class="block">
     <div class="head">

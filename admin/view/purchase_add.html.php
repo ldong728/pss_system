@@ -10,6 +10,10 @@
         width: 60px;
         min-width: 30px;
     }
+    .img {
+        width: 60px;
+        height: auto;
+    }
 </style>
 <div class="block">
     <div class="head">
@@ -44,12 +48,13 @@
     <table class="table">
         <tr>
             <td>选择类别：</td><td class="category-filter"><select class="category-template category-select"><option class="option-template"></option></select></td>
-            <td>按名称搜索:</td><td><input class="name-search-text search-input" type="text" placeholder="输入名称" maxlengtd="10"><button class="button search-button" data-type="search-name" id="sch1">搜索</button></td>
-            <td>按序列号搜索:</td><td><input class="sn-search-text search-input" type="text" placeholder="输入序列号" maxlengtd="10"><button class="button search-button" data-type="search-sn" id="sch1">搜索</button></td>
+            <td>按名称搜索:</td><td><input class="name-search-text search-input" type="text" placeholder="输入名称" maxlengtd="10"><button class="button search-button button-after-input" data-type="search-name" id="sch1">搜索</button></td>
+            <td>按序列号搜索:</td><td><input class="sn-search-text search-input" type="text" placeholder="输入序列号" maxlengtd="10"><button class="button search-button button-after-input" data-type="search-sn" id="sch1">搜索</button></td>
         </tr>
     </table>
     <table class="table sheet prepare-table" style="display: none">
         <tr>
+            <td>主图</td>
             <td>名称</td>
             <td>序列号</td>
             <td>库存</td>
@@ -57,6 +62,7 @@
 
         </tr>
         <tr class="prepare-tr-template">
+            <td><img class="img" alt="主图"></td>
             <td class="content" data-field="name"></td>
             <td class="content" data-field="sn"></td>
             <td class="content" data-field="stock"></td>
@@ -67,6 +73,7 @@
     </table>
 
 </div>
+<div class="big-img-container"><img class="big-img"></div>
 <script type="application/javascript" src="js/tableController.js"></script>
 
 <script>
@@ -174,6 +181,14 @@
         $(document).on('change','.provider-select',function(){
             var providerId=$(this).val();
             prePurchaseObj.provider=providerId
+        });
+        $(document).on('click','.img',function(){
+            var src=$(this).attr('src');
+            $('.big-img').attr('src',src);
+            $('.big-img-container').show();
+        })
+        $(document).on('click','.big-img',function(){
+            $('.big-img-container').hide();
         })
     }
 
@@ -244,6 +259,7 @@
                 $(value).text(v[$(value).data('field')]);
                 $(value).removeAttr('data-field');
             });
+            element.find('.img').attr('src', v.img);
             element.find('.add').attr('id', 'add'+v.product_id);
             $('.prepare-table').append(element);
             prepareList[v.product_id]=v;

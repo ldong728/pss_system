@@ -6,7 +6,6 @@ if (isset($_SESSION[DOMAIN]['login'])&&DOMAIN==$_SESSION[DOMAIN]['login']) {
     if(isset($_POST['pms'])&&array_key_exists($_POST['pms'],$_SESSION[DOMAIN]['pms'])){
         if(isset($_POST['method'])){
             switch ($_POST['method']) {
-
                 default:
                     $param=isset($_POST['ajax_data'])?$_POST['ajax_data']:null;
                     $method=trim($_POST['method']);
@@ -25,7 +24,6 @@ if (isset($_SESSION[DOMAIN]['login'])&&DOMAIN==$_SESSION[DOMAIN]['login']) {
             }else{
                 echo ajaxBack(null,1,'记录无法修改');
             }
-
             exit;
         }
         if (isset($_POST['deleteTblVal'])) {//快速删除
@@ -64,10 +62,16 @@ if (isset($_SESSION[DOMAIN]['login'])&&DOMAIN==$_SESSION[DOMAIN]['login']) {
         }
 
     }else{
+        if('stock_alert'==$_POST['method']){
+            product_list($_POST['ajax_data']);
+            exit;
+        }
         echo ajaxBack(null,9,'无权限');
         exit;
     }
 }
+
+
 
 function provider_list($data){
     $back=getList('provider_tbl','provider_tbl',$data);

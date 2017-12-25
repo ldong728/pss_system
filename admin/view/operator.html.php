@@ -80,7 +80,7 @@ $pmsCount = count($pmsList);
         var name = $('.new-name').val();
         var pwd = $('.new-pwd').val();
         if(name&&pwd){
-            var creatorId=<?php echo $_SESSION['operator_id']?>;
+            var creatorId=<?php echo $_SESSION[DOMAIN]['operator_id']?>;
             addRecord('operator',{name:name,pwd:pwd,creator:creatorId,md5:hex_md5(pwd)},'update',function(){
                 location.reload(true);
             })

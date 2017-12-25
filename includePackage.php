@@ -24,12 +24,13 @@ define("ALI_PAY_APP_ID","2016082100305102");
 define("ALI_PAY_GATEWAY","https://openapi.alipaydev.com/gateway.do");
 
 //server&database
-define('DOMAIN',"/pss_system");
+//define('DOMAIN',"/pss_system");
+define('DOMAIN',"/");//正式部署
 define("PRO","http://");
 define('DB_IP','localhost');
 define("DB_NAME","pss_system_db");
-define("DB_USER","root");
-define("DB_PSW","");
+define("DB_USER","pss_system_user");
+define("DB_PSW","ve6BJjyHHcfH9CDm");
 
 
 

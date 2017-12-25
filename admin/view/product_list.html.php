@@ -1,13 +1,19 @@
 <?php
 
 ?>
-
+<style>
+    .img{
+        width: 60px;
+        height: auto;;
+    }
+</style>
 <div class="block">
     <div class="head">
         产品列表
     </div>
     <table class="table sheet product-table">
         <tr>
+            <th>图片</th>
             <th>名称</th>
             <th>序列号</th>
             <th>价格</th>
@@ -17,6 +23,7 @@
 
         </tr>
         <tr class="tr-template">
+            <td><img class="img" alt="主图"></td>
             <td class="content" data-field="name"></td>
             <td class="content" data-field="sn"></td>
             <td class="content" data-field="default_price"></td>
@@ -54,6 +61,7 @@
     </div>
 
 </div>
+<div class="big-img-container"><img class="big-img"></div>
 <script type="application/javascript" src="js/tableController.js"></script>
 
 <script>
@@ -67,7 +75,6 @@
         TableController.setPageEvent();
         registEvent();
         initCategory();
-
     });
     function registEvent(){
         $(document).on('click','.button',function(){
@@ -115,6 +122,14 @@
             }
             TableController.getList(handleTableContent);
         });
+        $(document).on('click','.img',function(){
+            var src=$(this).attr('src');
+            $('.big-img').attr('src',src);
+            $('.big-img-container').show();
+        })
+        $(document).on('click','.big-img',function(){
+            $('.big-img-container').hide();
+        })
     }
 
     function initCategory(){
@@ -169,6 +184,7 @@
                 $(value).text(v[$(value).data('field')]);
                 $(value).removeAttr('data-field');
             });
+            element.find('.img').attr('src', v.img);
             element.find('.edit').attr('id', 'edt'+v.product_id);
             element.find('.delete').attr('id', 'del'+v.product_id);
             element.find('.stock').attr('id','stk'+ v.product_id);

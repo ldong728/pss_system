@@ -128,7 +128,7 @@
                 $(value).removeAttr('data-field');
             });
             element.find('.type').text(v['order_id']>0?'销售':'入库');
-            element.find('.order-purchase-id').text(v['order_id']||v['purchase']);
+            element.find('.order-purchase-id').text(v['order_id']>0?v['order_id']:v['purchase']);
 //            element.find('.print').attr('id', 'prt'+v.order_id);
 //            element.find('.detail').attr('id', 'dtl'+v.order_id);
             $('.stock-list').append(element);

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 2017-12-24 16:46:42
+-- Generation Time: 2017-12-25 11:28:57
 -- 服务器版本： 10.1.9-MariaDB
 -- PHP Version: 5.6.15
 
@@ -14,7 +14,7 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+/*!40101 SET NAMES utf8 */;
 
 --
 -- Database: `pss_system_db`
@@ -41,11 +41,11 @@ INSERT INTO `category_tbl` (`category_id`, `category_name`, `p_category`) VALUES
 (5, '卫生间用', 4),
 (12, '带浴缸型', 10),
 (11, '开关', 6),
+(15, '插座', 6),
 (1, '淋浴房', 0),
-(8, '淋浴房类型1', 1),
-(9, '淋浴房类型2', 1),
 (10, '淋浴房类型3', 1),
 (6, '电工产品', 0),
+(14, '电灯', 6),
 (4, '集成吊顶', 0);
 
 -- --------------------------------------------------------
@@ -265,9 +265,10 @@ CREATE TABLE `product_tbl` (
 --
 
 INSERT INTO `product_tbl` (`product_id`, `category`, `name`, `sn`, `brand`, `img`, `description`, `default_price`, `unit`, `stock`) VALUES
-(2, 13, '测试商品123', '123123321', 0, NULL, '这里是描述', '2345.00', '个', 44),
-(3, 13, '新测试', '6534534', NULL, NULL, '啊手动阀手动阀', '12332.00', '个', 43),
-(4, 5, '某品牌吊顶', '44545332', NULL, '../files/56e8a9c7f16ef98ec724ec50487faa7f.jpg', '哈哈哈哈哈哈', '230.00', '平方', 20);
+(2, 13, '测试商品123', '123123321', 0, '../files/6ddf1e04c5554825e4b8774b84cabcc8.jpg', '这里是描述', '2345.00', '个', 45),
+(3, 13, '新测试', '6534534', 0, '../files/6ddf1e04c5554825e4b8774b84cabcc8.jpg', '啊手动阀手动阀', '12332.00', '个', 43),
+(4, 5, '某品牌吊顶', '44545332', 0, '../files/6ddf1e04c5554825e4b8774b84cabcc8.jpg', '哈哈哈哈哈哈', '230.00', '平方', 21),
+(5, 15, '插座类型1', 'cz123', NULL, '../files/0786f2d280ecb54cd0f0185be2d070c9.jpg', '商品描述', '5.20', '个', 0);
 
 -- --------------------------------------------------------
 
@@ -317,7 +318,9 @@ CREATE TABLE `purchase_detail_tbl` (
 INSERT INTO `purchase_detail_tbl` (`purchase_detail_id`, `purchase`, `product`, `amount`) VALUES
 (17, 11, '2', 2),
 (18, 11, '3', 1),
-(19, 12, '4', 20);
+(19, 12, '4', 20),
+(20, 13, '2', 1),
+(21, 13, '4', 1);
 
 -- --------------------------------------------------------
 
@@ -356,7 +359,8 @@ CREATE TABLE `purchase_tbl` (
 
 INSERT INTO `purchase_tbl` (`purchase_id`, `provider`, `total_price`, `create_time`, `create_time_unix`, `creator`) VALUES
 (11, 1, '0.00', '2017-12-20 09:59:35', 1513763975, -1),
-(12, 1, '0.00', '2017-12-23 10:13:58', 1514024038, -1);
+(12, 1, '0.00', '2017-12-23 10:13:58', 1514024038, -1),
+(13, 1, '0.00', '2017-12-25 01:57:31', 1514167051, -1);
 
 -- --------------------------------------------------------
 
@@ -401,7 +405,9 @@ INSERT INTO `stock_detail_tbl` (`stock_id`, `order_id`, `purchase`, `product`, `
 (15, 3, 0, '3', -1, '2017-12-23 03:22:53', 1513999373),
 (16, 0, 12, '4', 20, '2017-12-23 10:13:58', 1514024038),
 (17, 4, 0, '2', -1, '2017-12-24 03:21:12', 1514085672),
-(18, 4, 0, '3', -3, '2017-12-24 03:21:12', 1514085672);
+(18, 4, 0, '3', -3, '2017-12-24 03:21:12', 1514085672),
+(19, 0, 13, '2', 1, '2017-12-25 01:57:31', 1514167051),
+(20, 0, 13, '4', 1, '2017-12-25 01:57:31', 1514167051);
 
 -- --------------------------------------------------------
 
@@ -633,7 +639,7 @@ ALTER TABLE `sub_menu_tbl`
 -- 使用表AUTO_INCREMENT `category_tbl`
 --
 ALTER TABLE `category_tbl`
-  MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 --
 -- 使用表AUTO_INCREMENT `customer_tbl`
 --
@@ -663,7 +669,7 @@ ALTER TABLE `pms_tbl`
 -- 使用表AUTO_INCREMENT `product_tbl`
 --
 ALTER TABLE `product_tbl`
-  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- 使用表AUTO_INCREMENT `provider_tbl`
 --
@@ -673,17 +679,17 @@ ALTER TABLE `provider_tbl`
 -- 使用表AUTO_INCREMENT `purchase_detail_tbl`
 --
 ALTER TABLE `purchase_detail_tbl`
-  MODIFY `purchase_detail_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `purchase_detail_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 --
 -- 使用表AUTO_INCREMENT `purchase_tbl`
 --
 ALTER TABLE `purchase_tbl`
-  MODIFY `purchase_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `purchase_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 --
 -- 使用表AUTO_INCREMENT `stock_detail_tbl`
 --
 ALTER TABLE `stock_detail_tbl`
-  MODIFY `stock_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `stock_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 --
 -- 使用表AUTO_INCREMENT `sub_menu_tbl`
 --

@@ -30,7 +30,7 @@
            <td class="content" data-field="customer_address"></td>
            <td>
                <button class="button edit" data-type="edit">编辑</button>
-               <button class="button delete" data-type="detail">交易记录</button>
+<!--               <button class="button delete" data-type="detail">交易记录</button>-->
            </td>
        </tr>
        </tbody>
