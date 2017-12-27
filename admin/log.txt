@@ -1,14 +1,11 @@
-2017.12.25.11:29:24:D:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT count(*) as count FROM product_tbl WHERE  stock<10
-2017.12.25.11:29:24:D:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT *  FROM product_tbl WHERE  stock<10  limit 0,30
-2017.12.25.11:29:32:D:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT count(*) as count FROM product_tbl WHERE  stock<10
-2017.12.25.11:29:32:D:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT *  FROM product_tbl WHERE  stock<10  limit 0,30
-2017.12.25.11:38:17:D:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT count(*) as count FROM product_tbl WHERE  stock<10
-2017.12.25.11:38:17:D:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT *  FROM product_tbl WHERE  stock<10  limit 0,30
-2017.12.25.11:39:06:D:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT count(*) as count FROM order_view
-2017.12.25.11:39:06:D:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT *  FROM order_view  limit 0,12
-2017.12.25.11:58:47:D:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT count(*) as count FROM product_tbl WHERE  stock<10
-2017.12.25.11:58:47:D:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT *  FROM product_tbl WHERE  stock<10  limit 0,30
-2017.12.25.11:58:51:D:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT count(*) as count FROM order_view
-2017.12.25.11:58:51:D:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT *  FROM order_view  limit 0,12
-2017.12.25.12:04:11:D:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT count(*) as count FROM order_view
-2017.12.25.12:04:11:D:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT *  FROM order_view  limit 0,12
+2017.12.27.15:25:10:D:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT count(*) as count FROM provider_tbl
+2017.12.27.15:25:10:D:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT *  FROM provider_tbl  limit 0,30
+2017.12.27.15:25:14:D:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT *  FROM product_provider_view WHERE provider="1"  limit 0,12
+2017.12.27.15:25:17:D:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT *  FROM product_provider_view WHERE provider="2"  limit 0,12
+2017.12.27.15:25:23:D:\xampp\htdocs\pss_system\admin\ajax_request.php290:is array: {1: {8: {product: 8,price: 350.00,amount: 1,type: }9: {product: 9,price: 120.00,amount: 1,type: dfgsddfg}}2: {11: {product: 11,price: 211.00,amount: 1,type: }}}
+2017.12.27.15:25:23:D:\xampp\htdocs\pss_system\admin\ajax_request.php290:is array: {1: {8: {product: 8,price: 350.00,amount: 1,type: }9: {product: 9,price: 120.00,amount: 1,type: dfgsddfg}}2: {11: {product: 11,price: 211.00,amount: 1,type: }}}
+2017.12.27.15:37:01:D:\xampp\htdocs\pss_system\admin\ajax_request.php303:SQLSTATE[42S22]: Column not found: 1054 Unknown column 'provider' in 'field list'
+2017.12.27.15:39:22:D:\xampp\htdocs\pss_system\admin\ajax_request.php303:SQLSTATE[42S22]: Column not found: 1054 Unknown column 'provider' in 'field list'
+2017.12.27.15:40:41:D:\xampp\htdocs\pss_system\admin\ajax_request.php297:is array: {8: {product: 8,price: 350.00,amount: 1,type: ,caigou: 1}9: {product: 9,price: 120.00,amount: 1,type: dfgsddfg,caigou: 1}11: {product: 11,price: 211.00,amount: 1,type: ,caigou: 2}}
+2017.12.27.15:40:41:D:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT count(*) as count FROM provider_tbl
+2017.12.27.15:40:41:D:\xampp\htdocs\pss_system\includes\db.inc.php86:queryNew:SELECT *  FROM provider_tbl  limit 0,30

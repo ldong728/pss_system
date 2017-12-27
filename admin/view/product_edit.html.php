@@ -16,17 +16,22 @@
             <table class="table baseInfo">
                 <tr>
                     <td>类别：</td>
-                    <td colspan="3" class="category-filter"><select class="category-template category-select product-normal-info" data-field="category"><option class="option-template"></option></select></td>
+                    <td class="category-filter"><select class="category-template category-select product-normal-info" data-field="category"><option class="option-template"></option></select></td>
+                    <td>供应商</td>
+                    <td class="provider-filter"></td>
                 </tr>
                 <tr>
                     <td>商品主图：</td>
-                    <td colspan="3"><button class="button upload-img">上传主图</button><img class="img-demo img" alt="商品图"><input type="hidden" id="img-field" class="product-normal-info" data-field="img"></td>
+                    <td><button class="button upload-img">上传主图</button><img class="img-demo img" alt="商品图"><input type="hidden" id="img-field" class="product-normal-info" data-field="img"></td>
+                    <td>采购价：</td>
+                    <td><input class="product-normal-info" data-field="purchase_price" type="text" placeholder="采购价"></td>
                 </tr>
+
                 <tr>
                     <td>商品名称：</td>
                     <td><input class="product-normal-info" data-field="name" type="text" placeholder="商品名称"></td>
-                    <td>序列号：</td>
-                    <td><input class="product-normal-info" data-field="sn" placeholder="序列号"></td>
+                    <td>型号：</td>
+                    <td><input class="product-normal-info" data-field="sn" placeholder="型号"></td>
                 </tr>
                 <tr>
                     <td>商品描述：</td>
@@ -53,6 +58,7 @@
 
             registEvent();
             initCategory();
+            initProvider();
 
 
         });
@@ -61,7 +67,12 @@
             $(document).on('click','#submit',function(){
                 $('.product-normal-info').each(function(k,v){
                     var field=$(v).data('field');
-                    productInf[field]= $(v).val();
+                    if($(v).val()&&'0'!=$(v).val()){
+                        productInf[field]= $(v).val();
+                    }
+                    console.log(field);
+                    console.log($(v).val());
+                    console.log(productInf);
                 });
 //                console.log(productInf);
                 updateProductInf();
@@ -78,6 +89,10 @@
                     }else{
                     }
                 }
+            });
+            $(document).on('change','.provider-select',function(){
+                var id=$(this).val();
+                productInf.provider=id;
             });
             $(document).on('click','.upload-img',function(){
                 $('#product-img').click();
@@ -113,7 +128,6 @@
                 if(backValue){
                     categoryList=backValue;
                     $('.category-filter').append(getSubCategoryElment(0));
-                    console.log(categoryList);
                 }
                 initProductInf();
             });
@@ -145,25 +159,26 @@
                     v.value=productInf[field];
                 });
 
-                var category=productInf.category;
-                console.log(category);
-                $('select.product-normal-info').removeClass('product-normal-info');
-                var selectElement=categoryDisplayElementsTemplate('.category-template');
-                var option=null;
-                for(var i in categoryList){
-                    if(categoryList[i].category_id==category)
-                    option=categoryList[i];
-                }
-                var optionElement=categoryDisplayElementsTemplate('.option-template');
-                optionElement.text(option.category_name);
-                optionElement.attr('selected','true');
-                optionElement.val(option.category_id);
-                selectElement.append(optionElement);
-                $('.category-select').after(selectElement);
+//                var category=productInf.category;
+//                console.log(category);
+//                $('select.product-normal-info').removeClass('product-normal-info');
+//                var selectElement=categoryDisplayElementsTemplate('.category-template');
+//                var option=null;
+//                for(var i in categoryList){
+//                    if(categoryList[i].category_id==category)
+//                    option=categoryList[i];
+//                }
+//                var optionElement=categoryDisplayElementsTemplate('.option-template');
+//                optionElement.text(option.category_name);
+//                optionElement.attr('selected','true');
+//                optionElement.val(option.category_id);
+//                selectElement.append(optionElement);
+//                $('.category-select').after(selectElement);
             }
         }
 
         function updateProductInf(){
+//            console.log(productInf);
             addRecord('product',productInf,'update',function(data){
                 console.log(data);
                 if(0==data.errcode){
@@ -176,6 +191,23 @@
                     }
                 }
             });
+        }
+        function initProvider() {
+            var selectElement = categoryDisplayElementsTemplate('.category-template');
+            selectElement.removeClass('category-select');
+            selectElement.addClass('provider-select');
+            selectElement.append('<option value="0" disabled="true" selected>供应商</option>');
+            selectElement.attr('data-field','provider');
+            ajaxPost('provider_list', {page: 0, number: 30,order:'desc',orderby:'provider_id'}, function (back) {
+                var backValue = backHandle(back);
+                $.each(backValue.list, function (k, v) {
+                    var optionElement = categoryDisplayElementsTemplate('.option-template');
+                    optionElement.attr('value', v.provider_id);
+                    optionElement.text(v.unit);
+                    selectElement.append(optionElement);
+                });
+                $('.provider-filter').append(selectElement);
+            })
         }
 
     </script>

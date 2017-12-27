@@ -126,6 +126,10 @@ function order_detail(){
     $orderId=isset($_GET['order_id'])?$_GET['order_id']:0;
     printAdminView('order_detail.html.php','订单详情');
 }
+function caigou_edit(){
+
+    printAdminView('caigou_edit.html.php','采购录入');
+}
 //以下为admin通用方法
 function options(){
     global $pmsList,$subMenuList;

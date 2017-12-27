@@ -101,6 +101,11 @@ function product_list($data){
     $back=getList('product_tbl','product_tbl',$data);
     echo ajaxBack($back);
 }
+function product_provide_list($data){
+
+    $back=getList('product_provider_view',null,$data,false);
+    echo ajaxBack($back);
+}
 function stock_detail($data){
     $back=getList('stock_detail_view','stock_detail_view',$data);
     echo ajaxBack($back);
@@ -264,6 +269,45 @@ function order_print($data){
 
 }
 
+function caigou_add($data){
+    verifyPms('caigou_edit');
+    $caigouDetailList=[];
+    $caigouValue=[];
+    foreach ($data['detail'] as $productId=>$row) {
+        if(!isset($caigouValue[$row['provider']])){
+            $caigouValue[$row['provider']]=['provider'=>$row['provider'],'total_fee'=>($row['amount']*$row['price'])];
+        }else{
+            $caigouValue[$row['provider']]['total_fee']+=$row['amount']*$row['price'];
+        }
+        $type=isset($row['type'])?$row['type']:'';
+        $caigouDetailList[$row['provider']][$row['product']]=['product'=>$row['product'],'price'=>$row['price'],'amount'=>$row['amount'],'type'=>$type];
+    }
+    pdoTransReady();
+    try{
+        $detailValue=[];
+        foreach ($caigouValue as $providerId=>$row) {
+            $caigouId=pdoInsert('caigou_tbl',$row);
+            if($caigouId){
+                foreach ($caigouDetailList[$providerId] as $pid=>$vElement) {
+                    $detailValue[$pid]=$vElement;
+                    $detailValue[$pid]['caigou']=$caigouId;
+                }
+            }
+        }
+        mylog($detailValue);
+        pdoBatchInsert('caigou_detail_tbl',$detailValue);
+        pdoCommit();
+        echo ajaxBack('ok');
+    }catch(PDOException $e){
+        pdoRollBack();
+        mylog($e->getMessage());
+        echo ajaxBack(null,109,'数据库错误');
+    }
+//    mylog($caigouDetailList);
+//    mylog($caigouValue);
+
+ }
+
 
 
 
@@ -280,7 +324,7 @@ function verifyPms($pms){
     }
 }
 
-function getList($tableName, $countTableName, $data)
+function getList($tableName, $countTableName, $data,$needCount=true)
 {
     $number = isset($data['number'])?$data['number']:12;
     $orderby = isset($data['orderby'])&&$data['orderby']?$data['orderby']:'';
@@ -289,7 +333,10 @@ function getList($tableName, $countTableName, $data)
     $filter = $orderby&&$order?"order by $orderby $order":'';
     $limit = " limit $start,$number";
     $where = isset($data['where'])&&$data['where'] ? $data['where'] : null;
-    $count = pdoQueryNew($countTableName, array('count(*) as count'), $where, $filter)->fetch()['count'];
+    $count=0;
+    if($needCount){
+        $count = pdoQueryNew($countTableName, array('count(*) as count'), $where, $filter)->fetch()['count'];
+    }
     $query = pdoQueryNew($tableName, null, $where, $filter . $limit);
     $query->setFetchMode(PDO::FETCH_ASSOC);
     $query = $query->fetchAll();

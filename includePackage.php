@@ -24,15 +24,21 @@ define("ALI_PAY_APP_ID","2016082100305102");
 define("ALI_PAY_GATEWAY","https://openapi.alipaydev.com/gateway.do");
 
 //server&database
-//define('DOMAIN',"/pss_system");
-define('DOMAIN',"/");//正式部署
 define("PRO","http://");
+
+
+//define('DOMAIN',"/");//正式部署
+//define('DB_IP','121.40.162.180');
+//define("DB_NAME","pss_system_db");
+//define("DB_USER","pss_developer");
+//define("DB_PSW","Wx7Av3PULQpfr4fJ");
+
+
+define('DOMAIN',"/pss_system");
 define('DB_IP','localhost');
 define("DB_NAME","pss_system_db");
-define("DB_USER","pss_system_user");
-define("DB_PSW","ve6BJjyHHcfH9CDm");
-
-
+define("DB_USER","root");
+define("DB_PSW","");
 
 $mypath = $_SERVER['DOCUMENT_ROOT'] .DOMAIN;   //用于直接部署
 include_once $mypath . '/includes/magicquotes.inc.php';

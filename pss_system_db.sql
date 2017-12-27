@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 2017-12-25 11:28:57
+-- Generation Time: 2017-12-27 15:53:35
 -- 服务器版本： 10.1.9-MariaDB
 -- PHP Version: 5.6.15
 
@@ -14,11 +14,76 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Database: `pss_system_db`
 --
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `caigou_detail_tbl`
+--
+
+CREATE TABLE `caigou_detail_tbl` (
+  `caigou_detail_id` int(11) NOT NULL,
+  `caigou` int(11) NOT NULL,
+  `product` int(11) NOT NULL,
+  `price` int(11) NOT NULL,
+  `amount` int(11) NOT NULL,
+  `type` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- 替换视图以便查看 `caigou_detail_view`
+--
+CREATE TABLE `caigou_detail_view` (
+`caigou_detail_id` int(11)
+,`caigou` int(11)
+,`product` int(11)
+,`price` int(11)
+,`amount` int(11)
+,`type` varchar(100)
+,`sn` varchar(32)
+,`img` varchar(50)
+,`name` varchar(40)
+,`unit` varchar(3)
+);
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `caigou_tbl`
+--
+
+CREATE TABLE `caigou_tbl` (
+  `caigou_id` int(11) NOT NULL,
+  `provider` int(11) NOT NULL,
+  `total_fee` decimal(8,2) DEFAULT NULL,
+  `create_time` datetime DEFAULT NULL,
+  `delivery_time` datetime DEFAULT NULL,
+  `remark` text
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- 替换视图以便查看 `caigou_view`
+--
+CREATE TABLE `caigou_view` (
+`caigou_id` int(11)
+,`provider` int(11)
+,`total_fee` decimal(8,2)
+,`create_time` datetime
+,`delivery_time` datetime
+,`remark` text
+,`address` varchar(50)
+,`contact` varchar(5)
+,`tel` varchar(12)
+);
 
 -- --------------------------------------------------------
 
@@ -37,16 +102,21 @@ CREATE TABLE `category_tbl` (
 --
 
 INSERT INTO `category_tbl` (`category_id`, `category_name`, `p_category`) VALUES
-(13, '不带浴缸', 10),
-(5, '卫生间用', 4),
-(12, '带浴缸型', 10),
-(11, '开关', 6),
-(15, '插座', 6),
-(1, '淋浴房', 0),
-(10, '淋浴房类型3', 1),
-(6, '电工产品', 0),
-(14, '电灯', 6),
-(4, '集成吊顶', 0);
+(19, '三角阀', 0),
+(27, '全铜下水器', 0),
+(18, '地漏', 0),
+(24, '小便斗', 0),
+(25, '拖把池', 0),
+(4, '梳妆台', 0),
+(6, '毛巾架', 0),
+(23, '洗菜盆', 0),
+(16, '洗衣柜', 0),
+(21, '浴缸', 0),
+(1, '淋浴升降', 0),
+(26, '艺术盆', 0),
+(22, '连体盆', 0),
+(20, '马桶', 0),
+(17, '龙头', 0);
 
 -- --------------------------------------------------------
 
@@ -85,6 +155,13 @@ CREATE TABLE `operator_tbl` (
   `md5` varchar(40) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- 转存表中的数据 `operator_tbl`
+--
+
+INSERT INTO `operator_tbl` (`id`, `name`, `nick_name`, `pwd`, `create_time`, `creator`, `md5`) VALUES
+(1, 'test1', NULL, 'test2', '2017-12-25 04:44:54', '-1', 'ad0234829205b9033196ba818f7a872b');
+
 -- --------------------------------------------------------
 
 --
@@ -97,6 +174,13 @@ CREATE TABLE `op_pms_tbl` (
   `remark` varchar(50) DEFAULT NULL,
   `remark2` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- 转存表中的数据 `op_pms_tbl`
+--
+
+INSERT INTO `op_pms_tbl` (`o_id`, `pms_id`, `remark`, `remark2`) VALUES
+(1, '113', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -126,18 +210,6 @@ CREATE TABLE `order_detail_tbl` (
   `amount` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- 转存表中的数据 `order_detail_tbl`
---
-
-INSERT INTO `order_detail_tbl` (`order_detail_id`, `order_id`, `product`, `amount`) VALUES
-(1, 2, 2, 3),
-(2, 2, 3, 3),
-(3, 3, 2, 2),
-(4, 3, 3, 1),
-(5, 4, 2, 1),
-(6, 4, 3, 3);
-
 -- --------------------------------------------------------
 
 --
@@ -165,20 +237,13 @@ CREATE TABLE `order_tbl` (
   `customer` int(11) NOT NULL DEFAULT '0',
   `custom_info` varchar(60) DEFAULT NULL,
   `total_fee` decimal(8,2) NOT NULL,
+  `discount` decimal(8,2) DEFAULT NULL,
   `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `create_time_unix` int(11) NOT NULL,
   `creator` int(11) NOT NULL,
-  `remark` varchar(100) DEFAULT NULL
+  `remark` text,
+  `delivery_time` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- 转存表中的数据 `order_tbl`
---
-
-INSERT INTO `order_tbl` (`order_id`, `customer`, `custom_info`, `total_fee`, `create_time`, `create_time_unix`, `creator`, `remark`) VALUES
-(2, 1, NULL, '0.00', '2017-12-22 15:54:42', 1513958082, -1, NULL),
-(3, 2, NULL, '0.00', '2017-12-23 03:22:53', 1513999373, -1, NULL),
-(4, 2, NULL, '39341.00', '2017-12-24 03:21:12', 1514085672, -1, NULL);
 
 -- --------------------------------------------------------
 
@@ -193,7 +258,7 @@ CREATE TABLE `order_view` (
 ,`create_time` timestamp
 ,`create_time_unix` int(11)
 ,`creator` int(11)
-,`remark` varchar(100)
+,`remark` text
 ,`customer_id` int(11)
 ,`customer_name` varchar(7)
 ,`customer_tel` varchar(12)
@@ -225,7 +290,8 @@ INSERT INTO `pms_tbl` (`id`, `key_word`, `name`, `remark`) VALUES
 (110, 'WLtOnSSnCo', '产品管理', NULL),
 (111, 'dMuAULNExF', '库存管理', NULL),
 (112, 'nMQJKYKfPk', '客户管理', NULL),
-(113, 'HgYTISEJXV', '销售管理', NULL);
+(113, 'HgYTISEJXV', '销售管理', NULL),
+(114, 'kVsMNdHEPY', '采购管理', NULL);
 
 -- --------------------------------------------------------
 
@@ -244,11 +310,37 @@ CREATE TABLE `pms_view` (
 -- --------------------------------------------------------
 
 --
+-- 替换视图以便查看 `product_provider_view`
+--
+CREATE TABLE `product_provider_view` (
+`product_id` int(11)
+,`provider` int(11)
+,`category` int(11)
+,`name` varchar(40)
+,`sn` varchar(32)
+,`brand` int(11)
+,`img` varchar(50)
+,`description` varchar(60)
+,`default_price` decimal(8,2)
+,`purchase_price` decimal(8,2)
+,`unit` varchar(3)
+,`stock` int(11)
+,`provider_name` varchar(30)
+,`address` varchar(50)
+,`contact` varchar(5)
+,`tel` varchar(12)
+,`fax` varchar(12)
+);
+
+-- --------------------------------------------------------
+
+--
 -- 表的结构 `product_tbl`
 --
 
 CREATE TABLE `product_tbl` (
   `product_id` int(11) NOT NULL,
+  `provider` int(11) DEFAULT NULL,
   `category` int(11) NOT NULL,
   `name` varchar(40) NOT NULL,
   `sn` varchar(32) NOT NULL,
@@ -256,6 +348,7 @@ CREATE TABLE `product_tbl` (
   `img` varchar(50) DEFAULT NULL,
   `description` varchar(60) NOT NULL,
   `default_price` decimal(8,2) DEFAULT NULL,
+  `purchase_price` decimal(8,2) DEFAULT NULL,
   `unit` varchar(3) NOT NULL DEFAULT '',
   `stock` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -264,11 +357,14 @@ CREATE TABLE `product_tbl` (
 -- 转存表中的数据 `product_tbl`
 --
 
-INSERT INTO `product_tbl` (`product_id`, `category`, `name`, `sn`, `brand`, `img`, `description`, `default_price`, `unit`, `stock`) VALUES
-(2, 13, '测试商品123', '123123321', 0, '../files/6ddf1e04c5554825e4b8774b84cabcc8.jpg', '这里是描述', '2345.00', '个', 45),
-(3, 13, '新测试', '6534534', 0, '../files/6ddf1e04c5554825e4b8774b84cabcc8.jpg', '啊手动阀手动阀', '12332.00', '个', 43),
-(4, 5, '某品牌吊顶', '44545332', 0, '../files/6ddf1e04c5554825e4b8774b84cabcc8.jpg', '哈哈哈哈哈哈', '230.00', '平方', 21),
-(5, 15, '插座类型1', 'cz123', NULL, '../files/0786f2d280ecb54cd0f0185be2d070c9.jpg', '商品描述', '5.20', '个', 0);
+INSERT INTO `product_tbl` (`product_id`, `provider`, `category`, `name`, `sn`, `brand`, `img`, `description`, `default_price`, `purchase_price`, `unit`, `stock`) VALUES
+(6, 3, 1, '淋浴高杆', 'CNA2950', 0, '', 'sdfs', '1360.00', '788.00', '套', 8),
+(7, 3, 0, '淋浴高杆', 'CNA31230', 0, '', '', '1760.00', '566.00', '套', 7),
+(8, 1, 26, '测试艺术盆', 'ys2232', 0, '../files/0786f2d280ecb54cd0f0185be2d070c9.jpg', '', '700.00', '350.00', '个', 0),
+(9, 1, 1, '测试艺术盆2', 'ysp22121', NULL, NULL, '', '500.00', '120.00', '个', 0),
+(10, 2, 1, '拖把池a', 'tbc1221', 0, '', '', '300.00', '21.00', '个', 0),
+(11, 2, 25, '拖把池b', 'tbc4343', 0, '', '', '550.00', '211.00', '个', 0),
+(12, 2, 23, '洗菜盆a', 'xcp23211', 0, '', '', '345.00', '0.00', '个', 0);
 
 -- --------------------------------------------------------
 
@@ -296,7 +392,9 @@ CREATE TABLE `provider_tbl` (
 --
 
 INSERT INTO `provider_tbl` (`provider_id`, `unit`, `address`, `contact`, `tel`, `fax`, `QQ`, `mail`, `account_bank`, `account`, `creator`, `status`) VALUES
-(1, '测试供应商', 'XX路OO号', '王大锤', '12345544', '121233', '2341', '232134sdf', '', '', 0, 1);
+(1, '测试供应商', 'XX路OO号', '王大锤', '12345544', '121233', '2341', '232134sdf', '', '', 0, 1),
+(2, '测试供应商2', '供应商地址', '测试', '233322332323', '', '', '', '', '', NULL, 1),
+(3, '供应商3', '啊手动阀手动阀', 'abc', '123232323', '', '', '', '', '', NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -310,17 +408,6 @@ CREATE TABLE `purchase_detail_tbl` (
   `product` varchar(32) NOT NULL,
   `amount` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- 转存表中的数据 `purchase_detail_tbl`
---
-
-INSERT INTO `purchase_detail_tbl` (`purchase_detail_id`, `purchase`, `product`, `amount`) VALUES
-(17, 11, '2', 2),
-(18, 11, '3', 1),
-(19, 12, '4', 20),
-(20, 13, '2', 1),
-(21, 13, '4', 1);
 
 -- --------------------------------------------------------
 
@@ -336,6 +423,7 @@ CREATE TABLE `purchase_detail_view` (
 ,`product_sn` varchar(32)
 ,`price` decimal(8,2)
 ,`unit` varchar(3)
+,`provider` int(11)
 );
 
 -- --------------------------------------------------------
@@ -352,15 +440,6 @@ CREATE TABLE `purchase_tbl` (
   `create_time_unix` int(11) NOT NULL,
   `creator` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- 转存表中的数据 `purchase_tbl`
---
-
-INSERT INTO `purchase_tbl` (`purchase_id`, `provider`, `total_price`, `create_time`, `create_time_unix`, `creator`) VALUES
-(11, 1, '0.00', '2017-12-20 09:59:35', 1513763975, -1),
-(12, 1, '0.00', '2017-12-23 10:13:58', 1514024038, -1),
-(13, 1, '0.00', '2017-12-25 01:57:31', 1514167051, -1);
 
 -- --------------------------------------------------------
 
@@ -393,21 +472,6 @@ CREATE TABLE `stock_detail_tbl` (
   `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `create_time_unix` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- 转存表中的数据 `stock_detail_tbl`
---
-
-INSERT INTO `stock_detail_tbl` (`stock_id`, `order_id`, `purchase`, `product`, `amount`, `create_time`, `create_time_unix`) VALUES
-(12, 2, 0, '2', -3, '2017-12-22 15:54:42', 1513958082),
-(13, 2, 0, '3', -3, '2017-12-22 15:54:42', 1513958082),
-(14, 3, 0, '2', -2, '2017-12-23 03:22:53', 1513999373),
-(15, 3, 0, '3', -1, '2017-12-23 03:22:53', 1513999373),
-(16, 0, 12, '4', 20, '2017-12-23 10:13:58', 1514024038),
-(17, 4, 0, '2', -1, '2017-12-24 03:21:12', 1514085672),
-(18, 4, 0, '3', -3, '2017-12-24 03:21:12', 1514085672),
-(19, 0, 13, '2', 1, '2017-12-25 01:57:31', 1514167051),
-(20, 0, 13, '4', 1, '2017-12-25 01:57:31', 1514167051);
 
 -- --------------------------------------------------------
 
@@ -450,15 +514,16 @@ INSERT INTO `sub_menu_tbl` (`id`, `parent_id`, `key_word`, `name`) VALUES
 (11, 110, 'category_edit', '分类编辑'),
 (12, 110, 'product_edit', '添加产品'),
 (13, 110, 'product_list', '产品列表'),
-(14, 111, 'purchase_add', '进货录入'),
-(15, 111, 'purchase_list', '进货历史'),
-(16, 111, 'purchase_detail', '进货详情'),
+(14, 111, 'purchase_add', '入库操作'),
+(15, 111, 'purchase_list', '入库历史'),
+(16, 111, 'purchase_detail', '入库详情'),
 (17, 113, 'order_add', '销售录入'),
 (18, 112, 'customer_list', '客户列表'),
 (19, 112, 'customer_edit', '新建客户'),
 (20, 113, 'order_detail', '销售详情'),
 (21, 113, 'order_list', '销售列表'),
-(22, 111, 'stock_detail', '库存明细');
+(22, 111, 'stock_detail', '库存明细'),
+(23, 114, 'caigou_edit', '采购录入');
 
 -- --------------------------------------------------------
 
@@ -473,6 +538,24 @@ CREATE TABLE `sub_menu_view` (
 ,`s_key` varchar(30)
 ,`s_name` varchar(30)
 );
+
+-- --------------------------------------------------------
+
+--
+-- 视图结构 `caigou_detail_view`
+--
+DROP TABLE IF EXISTS `caigou_detail_view`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `caigou_detail_view`  AS  select `a`.`caigou_detail_id` AS `caigou_detail_id`,`a`.`caigou` AS `caigou`,`a`.`product` AS `product`,`a`.`price` AS `price`,`a`.`amount` AS `amount`,`a`.`type` AS `type`,`b`.`sn` AS `sn`,`b`.`img` AS `img`,`b`.`name` AS `name`,`b`.`unit` AS `unit` from (`caigou_detail_tbl` `a` left join `product_tbl` `b` on((`a`.`product` = `b`.`product_id`))) ;
+
+-- --------------------------------------------------------
+
+--
+-- 视图结构 `caigou_view`
+--
+DROP TABLE IF EXISTS `caigou_view`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `caigou_view`  AS  select `a`.`caigou_id` AS `caigou_id`,`a`.`provider` AS `provider`,`a`.`total_fee` AS `total_fee`,`a`.`create_time` AS `create_time`,`a`.`delivery_time` AS `delivery_time`,`a`.`remark` AS `remark`,`b`.`address` AS `address`,`b`.`contact` AS `contact`,`b`.`tel` AS `tel` from (`caigou_tbl` `a` left join `provider_tbl` `b` on((`a`.`provider` = `b`.`provider_id`))) ;
 
 -- --------------------------------------------------------
 
@@ -513,11 +596,20 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 -- --------------------------------------------------------
 
 --
+-- 视图结构 `product_provider_view`
+--
+DROP TABLE IF EXISTS `product_provider_view`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `product_provider_view`  AS  select `a`.`product_id` AS `product_id`,`a`.`provider` AS `provider`,`a`.`category` AS `category`,`a`.`name` AS `name`,`a`.`sn` AS `sn`,`a`.`brand` AS `brand`,`a`.`img` AS `img`,`a`.`description` AS `description`,`a`.`default_price` AS `default_price`,`a`.`purchase_price` AS `purchase_price`,`a`.`unit` AS `unit`,`a`.`stock` AS `stock`,`b`.`unit` AS `provider_name`,`b`.`address` AS `address`,`b`.`contact` AS `contact`,`b`.`tel` AS `tel`,`b`.`fax` AS `fax` from (`product_tbl` `a` left join `provider_tbl` `b` on((`a`.`provider` = `b`.`provider_id`))) ;
+
+-- --------------------------------------------------------
+
+--
 -- 视图结构 `purchase_detail_view`
 --
 DROP TABLE IF EXISTS `purchase_detail_view`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `purchase_detail_view`  AS  select `a`.`purchase_detail_id` AS `purchase_detail_id`,`a`.`purchase` AS `purchase`,`a`.`product` AS `product`,`a`.`amount` AS `amount`,`b`.`name` AS `product_name`,`b`.`sn` AS `product_sn`,`b`.`default_price` AS `price`,`b`.`unit` AS `unit` from (`purchase_detail_tbl` `a` left join `product_tbl` `b` on((`a`.`product` = `b`.`product_id`))) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `purchase_detail_view`  AS  select `a`.`purchase_detail_id` AS `purchase_detail_id`,`a`.`purchase` AS `purchase`,`a`.`product` AS `product`,`a`.`amount` AS `amount`,`b`.`name` AS `product_name`,`b`.`sn` AS `product_sn`,`b`.`default_price` AS `price`,`b`.`unit` AS `unit`,`b`.`provider` AS `provider` from (`purchase_detail_tbl` `a` left join `product_tbl` `b` on((`a`.`product` = `b`.`product_id`))) ;
 
 -- --------------------------------------------------------
 
@@ -549,6 +641,18 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `caigou_detail_tbl`
+--
+ALTER TABLE `caigou_detail_tbl`
+  ADD PRIMARY KEY (`caigou_detail_id`);
+
+--
+-- Indexes for table `caigou_tbl`
+--
+ALTER TABLE `caigou_tbl`
+  ADD PRIMARY KEY (`caigou_id`);
 
 --
 -- Indexes for table `category_tbl`
@@ -636,10 +740,20 @@ ALTER TABLE `sub_menu_tbl`
 --
 
 --
+-- 使用表AUTO_INCREMENT `caigou_detail_tbl`
+--
+ALTER TABLE `caigou_detail_tbl`
+  MODIFY `caigou_detail_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
+-- 使用表AUTO_INCREMENT `caigou_tbl`
+--
+ALTER TABLE `caigou_tbl`
+  MODIFY `caigou_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
 -- 使用表AUTO_INCREMENT `category_tbl`
 --
 ALTER TABLE `category_tbl`
-  MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 --
 -- 使用表AUTO_INCREMENT `customer_tbl`
 --
@@ -649,7 +763,7 @@ ALTER TABLE `customer_tbl`
 -- 使用表AUTO_INCREMENT `operator_tbl`
 --
 ALTER TABLE `operator_tbl`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- 使用表AUTO_INCREMENT `order_detail_tbl`
 --
@@ -664,37 +778,37 @@ ALTER TABLE `order_tbl`
 -- 使用表AUTO_INCREMENT `pms_tbl`
 --
 ALTER TABLE `pms_tbl`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=114;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=115;
 --
 -- 使用表AUTO_INCREMENT `product_tbl`
 --
 ALTER TABLE `product_tbl`
-  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 --
 -- 使用表AUTO_INCREMENT `provider_tbl`
 --
 ALTER TABLE `provider_tbl`
-  MODIFY `provider_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `provider_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- 使用表AUTO_INCREMENT `purchase_detail_tbl`
 --
 ALTER TABLE `purchase_detail_tbl`
-  MODIFY `purchase_detail_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `purchase_detail_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 --
 -- 使用表AUTO_INCREMENT `purchase_tbl`
 --
 ALTER TABLE `purchase_tbl`
-  MODIFY `purchase_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `purchase_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 --
 -- 使用表AUTO_INCREMENT `stock_detail_tbl`
 --
 ALTER TABLE `stock_detail_tbl`
-  MODIFY `stock_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `stock_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 --
 -- 使用表AUTO_INCREMENT `sub_menu_tbl`
 --
 ALTER TABLE `sub_menu_tbl`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
