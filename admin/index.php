@@ -130,6 +130,14 @@ function caigou_edit(){
 
     printAdminView('caigou_edit.html.php','采购录入');
 }
+function caigou_list(){
+    printAdminView('caigou_list.html.php','采购列表');
+}
+function caigou_detail(){
+    global $caigouId;
+    $caigouId=isset($_GET['caigou_id'])?$_GET['caigou_id']:0;
+    printAdminView('caigou_detail.html.php','采购详情');
+}
 //以下为admin通用方法
 function options(){
     global $pmsList,$subMenuList;

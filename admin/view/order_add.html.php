@@ -1,6 +1,7 @@
 <?php
 
 ?>
+<script type="application/javascript" src="js/laydate.js"></script>
 <style>
     .search-input {
         width: 100px;
@@ -45,7 +46,7 @@
         <thead>
         <tr>
             <td>品名</td>
-            <td>序列号</td>
+            <td>型号</td>
             <td>数量</td>
             <td>单价</td>
             <td>操作</td>
@@ -74,7 +75,13 @@
         </tbody>
         <tfoot>
         <tr>
-            <td colspan="5">
+            <td>备注：</td>
+            <td colspan="4"><textarea class="remark-input" rows="3" style="width: 90%; resize: none;padding:5px"></textarea></td>
+        </tr>
+        <tr>
+            <td><input id="delivery-time" placeholder="交货日期"></td>
+            <td colspan="4">
+                折扣金额：￥<input type="number" class="discount-input">
                 总计：￥<span class="total-price"></span>
                 <button class="button" data-type="submit">提交订单</button>
             </td>
@@ -141,11 +148,17 @@
 var preOrderObj, prepareList;
 var prepareElementsTemplate, categoryDisplayElementsTemplate, preOrderElementTemplate;
 $(document).ready(function () {
-    preOrderObj = {customer: null, total_price: null, detail: {}};
+    preOrderObj = {customer: null, total_price: null,remark:null,discount:0,delivery:null, detail: {}};
     prepareElementsTemplate = TableController.prepareElement('.prepare-tr-template');
     preOrderElementTemplate = TableController.prepareElement('.pre-order-tr');
     TableController.init('product_list', handlePrepareTableContent);
     TableController.setPageEvent();
+    laydate({
+        elem:'#delivery-time',
+        format: 'YYYY-MM-DD hh:mm:ss',
+        show:true,
+        start:laydate.now()
+    });
     registEvent();
     initCategory();
     initCustomer();
@@ -257,6 +270,11 @@ function registEvent() {
         $('.tips').empty();
         getCustomerDetail(data, element);
     });
+    $(document).on('change','.discount-input',function(){
+       var discount=parseFloat($(this).val());
+        preOrderObj.discount=discount;
+        calcPreOrderTotalPrice();
+    });
 //    $(document).on('click','#right',function(){
 //       $('.pop-up').hide();
 //    });
@@ -325,7 +343,7 @@ function getAllSubCategoryObj(currentId) {
 }
 function getPrepareList(){
     TableController.setNumber(50);
-    TableController.addFilter({5:'stock > 0'});
+//    TableController.addFilter({5:'stock > 0'});
     TableController.getList();
 }
 function handlePrepareTableContent(back) {
@@ -346,6 +364,9 @@ function handlePrepareTableContent(back) {
 function submitOrder() {
 //    $('.customer_auto').trigger('change');
     var newCustom=null;
+    if($('.remark-input').val())preOrderObj.remark=$('.remark-input').val();
+    if($('.discount-input').val())preOrderObj.discount=parseFloat($('remark-input').val());
+    if($('#delivery-time').val())preOrderObj.delivery=$('#delivery-time').val();
     if(!preOrderObj.customer){
         console.log(123);
         preOrderObj.customer={};
@@ -415,6 +436,7 @@ function calcPreOrderTotalPrice(){
     $.each(preOrderObj.detail,function(k,v){
         preOrderObj.total_price+= v.amount* v.price;
     });
+    preOrderObj.total_price-=preOrderObj.discount;
     $('.total-price').text(preOrderObj.total_price.toFixed(2));
 }
 function scannerReady(){

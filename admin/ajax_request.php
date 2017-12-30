@@ -201,6 +201,9 @@ function order_add($data){
     $customer=$data['customer'];
     $detail=$data['detail'];
     $totalPrice=$data['total_price'];
+    $discount=$data['discount'];
+    $remark=$data['remark'];
+    $deliveryTime=$data['delivery'];
     $time=time();
     $orderId=0;
     $productIdList=[];
@@ -213,8 +216,9 @@ function order_add($data){
         }else{
             $customerId=$customer;
         }
+
         if($customerId){
-            $orderId=pdoInsert('order_tbl',['customer'=>$customerId,'total_fee'=>$totalPrice,'create_time_unix'=>$time,'creator'=>$_SESSION[DOMAIN]['operator_id']],'update');
+            $orderId=pdoInsert('order_tbl',['customer'=>$customerId,'total_fee'=>$totalPrice,'create_time_unix'=>$time,'creator'=>$_SESSION[DOMAIN]['operator_id'],'discount'=>$discount,'remark'=>addslashes($remark),'delivery_time'=>$deliveryTime],'update');
         }
         if($orderId){
             foreach ($detail as $k=>$v) {
@@ -273,9 +277,11 @@ function caigou_add($data){
     verifyPms('caigou_edit');
     $caigouDetailList=[];
     $caigouValue=[];
+    $remark=$data['remark'];
+    $delivery=$data['delivery'];
     foreach ($data['detail'] as $productId=>$row) {
         if(!isset($caigouValue[$row['provider']])){
-            $caigouValue[$row['provider']]=['provider'=>$row['provider'],'total_fee'=>($row['amount']*$row['price'])];
+            $caigouValue[$row['provider']]=['provider'=>$row['provider'],'total_fee'=>($row['amount']*$row['price']),'remark'=>$remark,'delivery_time'=>$delivery];
         }else{
             $caigouValue[$row['provider']]['total_fee']+=$row['amount']*$row['price'];
         }
@@ -307,6 +313,31 @@ function caigou_add($data){
 //    mylog($caigouValue);
 
  }
+function caigou_list($data){
+    $back=getList('caigou_view','caigou_view',$data);
+    echo ajaxBack($back);
+}
+function caigou_detail($data){
+    $id=$data['id'];
+    $caigouInf=pdoQuery('caigou_view',null,['caigou_id'=>$id],'limit 1');
+    $caigouInf->setFetchMode(PDO::FETCH_ASSOC);
+    $caigouInf=$caigouInf->fetch();
+    $caigouDetail=pdoQuery('caigou_detail_view',null,['caigou'=>$id],null);
+    $caigouDetail->setFetchMode(PDO::FETCH_ASSOC);
+    $caigouDetail=$caigouDetail->fetchAll();
+    echo ajaxBack(['inf'=>$caigouInf,'detail'=>$caigouDetail]);
+}
+function caigou_print($data){
+    global $mypath;
+    $id=$data['id'];
+    $caigouInf=pdoQuery('caigou_view',null,['caigou_id'=>$id],'limit 1')->fetch();
+    $caigouDetail=pdoQuery('caigou_detail_view',null,['caigou'=>$id],null)->fetchAll();
+    if($caigouInf){
+        include 'view/module/caigou_print_template.html.php';
+    }else{
+        echo 'error';
+    }
+}
 
 
 

@@ -1,6 +1,7 @@
 <?php
 
 ?>
+<script type="application/javascript" src="js/laydate.js"></script>
 <style>
     .search-input {
         width: 100px;
@@ -63,10 +64,15 @@
         </tbody>
         <tfoot>
         <tr>
-            <td colspan="8">
+            <td>备注：</td>
+            <td colspan="7"><textarea class="remark-input" rows="3" style="width: 90%; resize: none;padding:5px"></textarea></td>
+        </tr>
+        <tr>
+            <td colspan="2"><input id="delivery-time" placeholder="交货日期"></td>
+            <td colspan="6">
                 总计：￥<span class="total-price"></span>
-                <button class="button show-product-list">添加</button>
-                <button class="button submit-button" data-type="submit" style="display: none">保存</button>
+                <button class="button show-product-list">添加商品</button>
+                <button class="button submit-button" data-type="submit" style="display: none">生成订货单</button>
             </td>
         </tr>
         </tfoot>
@@ -138,11 +144,17 @@
 var jinhuoObj, prepareList;
 var prepareElementsTemplate, categoryDisplayElementsTemplate, preCaigouElementTemplate;
 $(document).ready(function () {
-    jinhuoObj = {total_price: null, detail: {}};
+    jinhuoObj = {total_price: null,delivery:null,remark:null,detail: {}};
     prepareElementsTemplate = TableController.prepareElement('.prepare-tr-template');
     preCaigouElementTemplate = TableController.prepareElement('.pre-caigou-tr');
     TableController.init('product_provide_list', handlePrepareTableContent);
     TableController.setPageEvent();
+    laydate({
+        elem:'#delivery-time',
+        format: 'YYYY-MM-DD hh:mm:ss',
+        show:true,
+        start:laydate.now()
+    });
     registEvent();
     initCategory();
     initProvider();
@@ -359,6 +371,8 @@ function handlePrepareTableContent(back) {
 }
 function submitCaigou() {
 //    $('.provider_auto').trigger('change');
+    if($('.remark-input').val())jinhuoObj.remark=$('.remark-input').val();
+    if($('#delivery-time').val())jinhuoObj.delivery=$('#delivery-time').val();
     ajaxPost('caigou_add', jinhuoObj, function (back) {
         var backValue = backHandle(back);
         if (backValue) {
