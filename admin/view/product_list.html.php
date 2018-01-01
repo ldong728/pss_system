@@ -95,6 +95,13 @@
                     var href=getHref('stock_detail');
                     location.href=href+'&product_id='+id;
                     break;
+                case 'delete':
+                    if(confirm('确定删除此商品？')){
+                        deleteRecord('product',{product_id:id},function(){
+                            TableController.getList();
+                        })
+                    }
+                    break;
                 default :
                     break;
             }

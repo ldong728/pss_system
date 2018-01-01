@@ -8,7 +8,7 @@ $pmsCount = count($pmsList);
 <div class="main">
     <table class="table sheet">
         <tr>
-            <td>操作员</td>
+            <td>登录名</td>
             <td>密码</td>
             <?php foreach ($pmsList as $row): ?>
                 <td>

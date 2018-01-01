@@ -32,8 +32,8 @@
             <a href="index.php?logout=1" class="logout"></a>
             <a href="#" target="_blank" class="home"></a>
             <div>
-                <h2>gooduo</h2>
-                <h3>后台管理员</h3>
+                <h2>cona</h2>
+                <h3><?=$_SESSION[DOMAIN]['operator_name']?></h3>
             </div>
             <a href="?/basic/mod-admin_list/index.html" target="_blank" class="gooduo"></a>
         </div>

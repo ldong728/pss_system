@@ -1,5 +1,5 @@
+<?php $count=1?>
 <link rel="stylesheet" type="text/css" media="print" href="stylesheet/print.css?v=<?=rand(1000, 9999) ?>">
-
 <div class="main-title">销售清单</div>
 <div class="info-container">
     <table class="info" width="100%">
@@ -12,7 +12,8 @@
             <td>电话：<?=$orderInf['customer_tel']?></td>
         </tr>
         <tr>
-            <td colspan="2">收货地址：<?=$orderInf['customer_address']?></td>
+            <td>收货地址：<?=$orderInf['customer_address']?></td>
+            <td>交货日期：<?=$orderInf['delivery_time']?></td>
         </tr>
     </table>
 </div>
@@ -21,7 +22,7 @@
     <table class="detail">
         <tr><td>序号</td>
             <td>名称</td>
-            <td>编号</td>
+            <td>型号</td>
             <td>价格</td>
             <td>单位</td>
             <td>数量</td>
@@ -29,6 +30,7 @@
         </tr>
         <?php foreach($orderDetail as $row):?>
         <tr>
+            <td><?=$count++?></td>
             <td><?=$row['product_name']?></td>
             <td><?=$row['product_sn']?></td>
             <td>￥<?=$row['price']?></td>
@@ -39,7 +41,7 @@
         <?php endforeach?>
         <tr>
             <td>合计</td>
-            <td colspan="6">￥<?=$orderInf['total_fee']?></td>
+            <td colspan="6">￥<?=$orderInf['total_fee']?><?php if((float)($orderInf['discount'])):?>(含折扣<?=$orderInf['discount']?>)<?php endif?></td>
         </tr>
         <tr>
             <td colspan="7">备注：<?=$orderInf['remark']?></td>

@@ -198,6 +198,7 @@ function customer_detail($data){
 }
 function order_add($data){
     verifyPms('order_add');
+    mylog($data);
     $customer=$data['customer'];
     $detail=$data['detail'];
     $totalPrice=$data['total_price'];

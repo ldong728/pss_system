@@ -60,6 +60,7 @@
             var id=$(this).attr('id').slice(3);
             ajaxPost('caigou_print',{id:id},function(back){
                 $(back).jqprint({debug: false,importCSS:true});
+//                printElement(back);
             });
         });
         $(document).on('click','.detail',function(){

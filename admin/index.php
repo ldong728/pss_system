@@ -21,14 +21,16 @@ if (isset($_SESSION[DOMAIN]['login']) && DOMAIN == $_SESSION[DOMAIN]['login']) {
         $pwd = $_POST['password'];
         if ($_POST['adminName'] . $_POST['password'] == ADMIN . PASSWORD) {
             $_SESSION[DOMAIN]['login'] = DOMAIN;
+            $_SESSION[DOMAIN]['operator_name']="系统管理员";
             $_SESSION[DOMAIN]['operator_id'] = -1;
             printAdminView('blank.html.php', '管理后台');
         } else {
-            $query = pdoQuery('operator_tbl',array('id'), array('name' => $name, 'md5' => md5($pwd)), ' limit 1');
+            $query = pdoQuery('operator_tbl',array('id','name'), array('name' => $name, 'md5' => md5($pwd)), ' limit 1');
             $op_inf = $query->fetch();
             if ($op_inf) {
                 $_SESSION[DOMAIN]['login'] = DOMAIN;
                 $_SESSION[DOMAIN]['operator_id'] = $op_inf['id'];
+                $_SESSION[DOMAIN]['operator_name']=$op_inf['name'];
                 printAdminView('blank.html.php', '管理后台');
                 exit;
             } else {
@@ -138,6 +140,8 @@ function caigou_detail(){
     $caigouId=isset($_GET['caigou_id'])?$_GET['caigou_id']:0;
     printAdminView('caigou_detail.html.php','采购详情');
 }
+
+
 //以下为admin通用方法
 function options(){
     global $pmsList,$subMenuList;

@@ -1,0 +1,3 @@
+2018.01.01.13:54:43:C:\xampp\htdocs\pss_system\admin\upload.class.php128:C:\xampp\tmp\phpC5E1.tmp
+2018.01.01.13:54:43:C:\xampp\htdocs\pss_system\admin\upload.class.php129:../files/cb98c779cfc8875ecda09f828e50ba51.jpg
+2018.01.01.13:55:46:C:\xampp\htdocs\pss_system\admin\ajax_request.php304:is array: {13: {product: 13,price: 12.00,amount: 2,type: ,caigou: 1}}

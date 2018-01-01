@@ -32,7 +32,7 @@ table.info{
 table.detail{
     width: 100%;
     font-size: 11pt;
-    border: dotted 1px #000000;
+    border: dashed 1px #000000;
     border-collapse: collapse;
 }
 .detail tr {
@@ -55,4 +55,8 @@ table.detail{
     margin-top: 30px;
     font-size: x-large;
     text-align: center;
+}
+
+img {
+    width: 30px;
 }

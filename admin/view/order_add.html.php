@@ -365,10 +365,10 @@ function submitOrder() {
 //    $('.customer_auto').trigger('change');
     var newCustom=null;
     if($('.remark-input').val())preOrderObj.remark=$('.remark-input').val();
-    if($('.discount-input').val())preOrderObj.discount=parseFloat($('remark-input').val());
+    if($('.discount-input').val())preOrderObj.discount=parseFloat($('.discount-input').val());
     if($('#delivery-time').val())preOrderObj.delivery=$('#delivery-time').val();
+    console.log(preOrderObj);
     if(!preOrderObj.customer){
-        console.log(123);
         preOrderObj.customer={};
         $('.customer-input').each(function(k,v){
             var value=$(v).val();
