@@ -12,6 +12,10 @@
         width: 60px;
         min-width: 30px;
     }
+    img {
+        width:40px;
+        height: auto;
+    }
 
 </style>
 <div class="block">
@@ -120,13 +124,15 @@
         </table>
         <table class="table sheet prepare-table" style="display: none">
             <tr>
+                <td>图片</td>
                 <td>名称</td>
-                <td>序列号</td>
+                <td>型号</td>
                 <td>库存</td>
                 <td>操作</td>
 
             </tr>
             <tr class="prepare-tr-template">
+                <td><img class="img" alt="图片"></td>
                 <td class="content" data-field="name"></td>
                 <td class="content" data-field="sn"></td>
                 <td class="content" data-field="stock"></td>
@@ -356,6 +362,7 @@ function handlePrepareTableContent(back) {
             $(value).removeAttr('data-field');
         });
         element.find('.add').attr('id', 'add' + v.product_id);
+        element.find('img').attr('src', v.img);
         $('.prepare-table').append(element);
         prepareList[v.product_id] = v;
     });
