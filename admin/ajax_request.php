@@ -301,7 +301,7 @@ function caigou_add($data){
                 }
             }
         }
-        mylog($detailValue);
+//        mylog($detailValue);
         pdoBatchInsert('caigou_detail_tbl',$detailValue);
         pdoCommit();
         echo ajaxBack('ok');

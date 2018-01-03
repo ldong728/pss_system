@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 2017-12-30 17:20:56
+-- Generation Time: 2018-01-02 08:57:00
 -- 服务器版本： 10.1.9-MariaDB
 -- PHP Version: 5.6.15
 
@@ -14,7 +14,7 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+/*!40101 SET NAMES utf8 */;
 
 --
 -- Database: `pss_system_db`
@@ -77,7 +77,7 @@ CREATE TABLE `caigou_tbl` (
   `caigou_id` int(11) NOT NULL,
   `provider` int(11) NOT NULL,
   `total_fee` decimal(8,2) DEFAULT NULL,
-  `create_time` datetime DEFAULT CURRENT_TIMESTAMP,
+  `create_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `delivery_time` datetime DEFAULT NULL,
   `remark` text
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -90,8 +90,8 @@ INSERT INTO `caigou_tbl` (`caigou_id`, `provider`, `total_fee`, `create_time`, `
 (1, 3, '1920.00', NULL, NULL, NULL),
 (2, 1, '470.00', NULL, NULL, NULL),
 (3, 2, '21.00', NULL, NULL, NULL),
-(4, 1, '470.00', '2017-12-30 17:20:31', '2017-12-04 00:00:00', '哈哈哈哈哈'),
-(5, 2, '211.00', '2017-12-30 17:20:31', '2017-12-04 00:00:00', '哈哈哈哈哈');
+(4, 1, '470.00', '2017-12-30 09:20:31', '2017-12-04 00:00:00', '哈哈哈哈哈'),
+(5, 2, '211.00', '2017-12-30 09:20:31', '2017-12-04 00:00:00', '哈哈哈哈哈');
 
 -- --------------------------------------------------------
 
@@ -102,7 +102,7 @@ CREATE TABLE `caigou_view` (
 `caigou_id` int(11)
 ,`provider` int(11)
 ,`total_fee` decimal(8,2)
-,`create_time` datetime
+,`create_time` timestamp
 ,`delivery_time` datetime
 ,`remark` text
 ,`provider_name` varchar(30)

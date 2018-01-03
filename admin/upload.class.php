@@ -125,8 +125,8 @@ class uploader
         $this->fullName = $folder . $this->getName();
 
         if ( $this->stateInfo == $this->stateMap[ 0 ] ) {
-            mylog($file[ "tmp_name" ]);
-            mylog($this->fullName);
+//            mylog($file[ "tmp_name" ]);
+//            mylog($this->fullName);
             if ( !move_uploaded_file( $file[ "tmp_name" ] ,$this->fullName ) ) {
                 mylog('save error');
                 $this->stateInfo = $this->getStateInfo( "MOVE" );
