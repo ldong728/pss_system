@@ -80,7 +80,7 @@
         $(document).on('click','.button',function(){
             var type=$(this).data('type');
             var id=this.id.slice(3);
-            console.log(id);
+//            console.log(id);
             switch(type){
                 case 'edit':
                     var href=getHref('product_edit');
@@ -146,7 +146,7 @@
             if(backValue){
                 categoryList=backValue;
                 $('.category-filter').append(getSubCategoryElment(0));
-                console.log(categoryList);
+//                console.log(categoryList);
             }
         });
     }
@@ -184,6 +184,7 @@
         return encodeListToTree(categoryList,'category_id','p_category',currentId);
     }
     function handleTableContent(back){
+//        console.log('handleTable');
         $('.tr-template').remove();
         $.each(back.list,function(k,v){
             var element = trElements('.tr-template');
