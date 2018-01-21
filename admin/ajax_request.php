@@ -135,13 +135,15 @@ function add_category($data){
 }
 function purchase_add_recode($data){
     verifyPms('purchase_add');
-    $provider=$data['provider'];
+//    $time=time();
+    $timeMysql=$data['time']?$data['time']:timeUnixToMysql(time());
+    $time=timeMysqlToUnix($timeMysql);
     $total_price=isset($data['total_price'])?$data['total_price']:0;
     $details=$data['detail'];
-    $time=time();
+//    $time=time();
     pdoTransReady();
     try{
-        $purchaseId=pdoInsert('purchase_tbl',['provider'=>$provider,'total_price'=>$total_price,'create_time_unix'=>$time,'creator'=>$_SESSION[DOMAIN]['operator_id']],'update');
+        $purchaseId=pdoInsert('purchase_tbl',['total_price'=>$total_price,'create_time_unix'=>$time,'create_time'=>$timeMysql,'creator'=>$_SESSION[DOMAIN]['operator_id']],'update');
         if($purchaseId){
             $values=[];
             $valuesStock=[];
@@ -151,8 +153,10 @@ function purchase_add_recode($data){
                 $values[$k]['purchase']=$purchaseId;
                 $valuesStock[$k]=$values[$k];
                 $valuesStock[$k]['create_time_unix']=$time;
+                $valuesStock[$k]['create_time']=$timeMysql;
                 exeNew('update product_tbl set stock=stock+'.$row['amount'].' where product_id='.$row['product']);
             }
+            mylog($valuesStock);
             pdoBatchInsert('purchase_detail_tbl',$values);
             pdoBatchInsert('stock_detail_tbl',$valuesStock);
         }
@@ -204,8 +208,13 @@ function order_add($data){
     $totalPrice=$data['total_price'];
     $discount=$data['discount'];
     $remark=$data['remark'];
-    $deliveryTime=$data['delivery'];
     $time=time();
+    $timeMysql=timeUnixToMysql($time);
+    if($data['order_time']){
+        $timeMysql=$data['order_time'];
+        $time=timeMysqlToUnix($data['order_time']);
+    }
+    $deliveryTime=$data['delivery']?$data['delivery']:$timeMysql;
     $orderId=0;
     $productIdList=[];
     $orderDetailValue=[];
@@ -219,17 +228,17 @@ function order_add($data){
         }
 
         if($customerId){
-            $orderId=pdoInsert('order_tbl',['customer'=>$customerId,'total_fee'=>$totalPrice,'create_time_unix'=>$time,'creator'=>$_SESSION[DOMAIN]['operator_id'],'discount'=>$discount,'remark'=>addslashes($remark),'delivery_time'=>$deliveryTime],'update');
+            $orderId=pdoInsert('order_tbl',['customer'=>$customerId,'total_fee'=>$totalPrice,'create_time'=>$timeMysql,'create_time_unix'=>$time,'creator'=>$_SESSION[DOMAIN]['operator_id'],'discount'=>$discount,'remark'=>addslashes($remark),'delivery_time'=>$deliveryTime],'update');
         }
         if($orderId){
             foreach ($detail as $k=>$v) {
                 $productIdList[]=$k;
                 $orderDetailValue[$k]=['order_id'=>$orderId,'product'=>$v['product'],'amount'=>$v['amount'],];
-                $stockDetailValue[$k]=['order_id'=>$orderId,'product'=>$v['product'],'amount'=>-$v['amount'],'create_time_unix'=>$time];
-                exeNew('update product_tbl set stock=stock-'.$v['amount'].' where product_id='.$v['product']);
+//                $stockDetailValue[$k]=['order_id'=>$orderId,'product'=>$v['product'],'amount'=>-$v['amount'],'create_time_unix'=>$time];
+//                exeNew('update product_tbl set stock=stock-'.$v['amount'].' where product_id='.$v['product']);
             }
             pdoBatchInsert('order_detail_tbl',$orderDetailValue);
-            pdoBatchInsert('stock_detail_tbl',$stockDetailValue);
+//            pdoBatchInsert('stock_detail_tbl',$stockDetailValue);
         }
         echo ajaxBack($orderId);
         pdoCommit();
@@ -270,6 +279,21 @@ function order_print($data){
         include 'view/module/order_print_template.html.php';
     }else{
         echo 'error';
+    }
+
+}
+function order_delete($data){
+    $id=$data['order_id'];
+    pdoTransReady();
+    try{
+        pdoDelete('order_tbl',['order_id'=>$id]);
+        pdoDelete('order_detail_tbl',['order_id'=>$id]);
+        pdoCommit();
+        echo ajaxBack('ok');
+    }catch(PDOException $e){
+        mylog($e->getMessage());
+        pdoRollBack();
+        echo ajaxBack(null,109,'数据库错误');
     }
 
 }
@@ -338,6 +362,51 @@ function caigou_print($data){
     }else{
         echo 'error';
     }
+}
+function stock_out_print($data){
+    global $mypath;
+    $id=$data['id'];
+    $orderInf=pdoQuery('order_view',null,['order_id'=>$id],'limit 1')->fetch();
+    $orderDetail=pdoQuery('stock_detail_view',null,['order_id'=>$id],null)->fetchAll();
+
+    $total=pdoQuery('order_detail_tbl',['count(*) as total'],['order_id'=>$id],null)->fetch()['total'];
+    if($total==count($orderDetail)){
+        pdoUpdate('order_tbl',['delivery_status'=>1],['order_id'=>$id]);
+    }
+//    $orderStatus=pdoQuery('order_detail_tbl',['order_detail_id'],['order_id'=>$id],)
+    if($orderInf){
+        include 'view/module/stock_print_template.html.php';
+    }else{
+        echo 'error';
+    }
+
+}
+
+function stock_out($data)
+{
+    pdoTransReady();
+    try {
+        foreach ($data as $row) {
+            $productId = $row['product'];
+            $orderId = $row['order_id'];
+            $orderDetailId = $row['order_detail_id'];
+            $amount = $row['amount'];
+            pdoUpdate('order_detail_tbl',['status'=>1],['order_detail_id'=>$orderDetailId],'limit 1');
+            pdoInsert('stock_detail_tbl',['order_id'=>$orderId,'product'=>$productId,'amount'=>'-'.$amount,'create_time_unix'=>time()]);
+            exeNew('update product_tbl set stock=stock-'.$amount.' where product_id='.$productId);
+            mylog(json_encode($row));
+        }
+        pdoCommit();
+    } catch (PDOException $e) {
+        pdoRollBack();
+        mylog($e->getMessage());
+        echo ajaxBack(null, 109, '数据库错误');
+        return;
+    }
+    echo ajaxBack('ok');
+//    pdoQuery('order_detail_tbl',['order_detail_id'],['order_id'])
+
+
 }
 
 

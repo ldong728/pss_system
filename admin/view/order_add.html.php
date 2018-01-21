@@ -32,9 +32,10 @@
         </tr>
         <tr>
 
-            <td colspan="2">输入地址：<input type="text" class="customer-input" data-field="customer_address"
+            <td>输入地址：<input type="text" class="customer-input" data-field="customer_address"
                                         placeholder="输入地址" style="max-width: 500px;width: 250px" maxlength="20"> <span
                     class="tips"></span></td>
+            <td><input id="order-time" placeholder="制单日期"></td>
             <td>
                 <button class="button show-product-list">添加产品</button>
             </td>
@@ -154,13 +155,19 @@
 var preOrderObj, prepareList;
 var prepareElementsTemplate, categoryDisplayElementsTemplate, preOrderElementTemplate;
 $(document).ready(function () {
-    preOrderObj = {customer: null, total_price: null,remark:null,discount:0,delivery:null, detail: {}};
+    preOrderObj = {customer: null, total_price: null,remark:null,discount:0,delivery:null, detail: {},order_time:0};
     prepareElementsTemplate = TableController.prepareElement('.prepare-tr-template');
     preOrderElementTemplate = TableController.prepareElement('.pre-order-tr');
     TableController.init('product_list', handlePrepareTableContent);
     TableController.setPageEvent();
     laydate({
         elem:'#delivery-time',
+        format: 'YYYY-MM-DD hh:mm:ss',
+        show:true,
+        start:laydate.now()
+    });
+    laydate({
+        elem:'#order-time',
         format: 'YYYY-MM-DD hh:mm:ss',
         show:true,
         start:laydate.now()
@@ -256,10 +263,10 @@ function registEvent() {
             }
         }
         if (categoryFilter) {
-            TableController.setfilter({category: categoryFilter});
+            TableController.setFilter({category: categoryFilter});
 //                TableController.filter.where.category=categoryFilter;
         } else {
-            TableController.setfilter({});
+            TableController.setFilter({});
         }
         getPrepareList()
     });
@@ -374,6 +381,7 @@ function submitOrder() {
     if($('.remark-input').val())preOrderObj.remark=$('.remark-input').val();
     if($('.discount-input').val())preOrderObj.discount=parseFloat($('.discount-input').val());
     if($('#delivery-time').val())preOrderObj.delivery=$('#delivery-time').val();
+    if($('#order-time').val())preOrderObj.order_time=$('#order-time').val();
     console.log(preOrderObj);
     if(!preOrderObj.customer){
         preOrderObj.customer={};

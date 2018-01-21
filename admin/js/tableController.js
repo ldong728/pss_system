@@ -31,7 +31,7 @@ var TableController = {
             }
         }
     },
-    setfilter:function(filter){
+    setFilter:function(filter){
         if('object'==typeof(filter))
         this.filter.where=filter;
     },

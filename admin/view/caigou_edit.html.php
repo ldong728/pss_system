@@ -257,10 +257,10 @@ function registEvent() {
             }
         }
         if (categoryFilter) {
-            TableController.setfilter({category: categoryFilter});
+            TableController.setFilter({category: categoryFilter});
 //                TableController.filter.where.category=categoryFilter;
         } else {
-            TableController.setfilter({});
+            TableController.setFilter({});
         }
         getPrepareList()
     });

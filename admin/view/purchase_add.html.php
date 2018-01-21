@@ -1,6 +1,7 @@
 <?php
 
 ?>
+<script type="application/javascript" src="js/laydate.js"></script>
 <style>
     .search-input {
         width: 100px;
@@ -37,7 +38,7 @@
         </tr>
         </tbody>
         <tfoot>
-            <tr><td colspan="2">选择供应商：<span class="provider-container"></span></td><td colspan="2"><button class="button" data-type="submit">提交此笔记录</button></td></tr>
+            <tr><td colspan="2">入库时间<input id="purchase-time" placeholder="入库时间"></td><td colspan="2"><button class="button" data-type="submit">提交此笔记录</button></td></tr>
         </tfoot>
     </table>
 
@@ -87,7 +88,12 @@
         TableController.setPageEvent();
         registEvent();
         initCategory();
-        initProvider();
+        laydate({
+            elem:'#purchase-time',
+            format: 'YYYY-MM-DD hh:mm:ss',
+            show:true,
+            start:laydate.now()
+        });
 
     });
     function registEvent(){
@@ -171,16 +177,12 @@
                 }
             }
             if(categoryFilter){
-                TableController.setfilter({category:categoryFilter});
+                TableController.setFilter({category:categoryFilter});
 //                TableController.filter.where.category=categoryFilter;
             }else{
-                TableController.setfilter({});
+                TableController.setFilter({});
             }
             TableController.getList();
-        });
-        $(document).on('change','.provider-select',function(){
-            var providerId=$(this).val();
-            prePurchaseObj.provider=providerId
         });
         $(document).on('click','.img',function(){
             var src=$(this).attr('src');
@@ -267,7 +269,8 @@
         $('.prepare-table').show();
     }
     function submitPurchase(){
-        if(prePurchaseObj.provider&&prePurchaseObj.detail){
+        if(prePurchaseObj.detail){
+            prePurchaseObj.time=$('#purchase-time').val();
             ajaxPost('purchase_add_recode',prePurchaseObj,function(back){
                var backValue=backHandle(back);
                 if(backValue){
@@ -277,7 +280,7 @@
                 }
             });
         }else{
-            showToast('请先选择供应商');
+//            showToast('请先选择供应商');
         }
     }
     function initProvider(){

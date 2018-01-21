@@ -55,7 +55,7 @@ global $purchaseId
         elements = TableController.prepareElement('.tr-template');
         TableController.init('get_purchase_detail', handleDetail);
         if (purchaseId) {
-            TableController.setfilter({purchase_id: purchaseId});
+            TableController.setFilter({purchase_id: purchaseId});
             TableController.getList();
         }
 

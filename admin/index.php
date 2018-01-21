@@ -95,6 +95,10 @@ function purchase_add(){
 function purchase_list(){
     printAdminView('purchase_list.html.php','进货记录');
 }
+function stock_out_add(){
+    printAdminView('stock_out_add.html.php','出库');
+}
+
 function purchase_detail(){
     global $purchaseId;
     $purchaseId=isset($_GET['purchase_id'])?$_GET['purchase_id']:0;

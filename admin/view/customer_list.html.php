@@ -85,17 +85,17 @@
                     break;
                 case 'search-name':
                     var text=$('.name-search-text').val();
-                    TableController.setfilter({0:'customer_name like "%'+text+'%"'});
+                    TableController.setFilter({0:'customer_name like "%'+text+'%"'});
                     TableController.getList();
                     break;
                 case 'search-address':
                     var text=$('.address-search-text').val();
-                    TableController.setfilter({0:'customer_address like "%'+text+'%"'});
+                    TableController.setFilter({0:'customer_address like "%'+text+'%"'});
                     TableController.getList();
                     break;
                 case 'search-tel':
                     var text=$('.tel-search-text').val();
-                    TableController.setfilter({0:'customer_tel like "%'+text+'%"'});
+                    TableController.setFilter({0:'customer_tel like "%'+text+'%"'});
                     TableController.getList();
                     break;
                 default :

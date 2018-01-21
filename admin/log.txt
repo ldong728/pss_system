@@ -1,21 +1,16 @@
-2018.01.02.09:16:46:D:\wwwroot\pss\cncona\admin\index.php6:ok
-2018.01.02.09:16:49:D:\wwwroot\pss\cncona\admin\upload.class.php128:C:\Windows\Temp\php28.tmp
-2018.01.02.09:16:49:D:\wwwroot\pss\cncona\admin\upload.class.php129:../files/de06059f2355fec3b2962e8b40373863.jpg
-2018.01.02.09:17:25:D:\wwwroot\pss\cncona\admin\index.php6:ok
-2018.01.02.09:17:27:D:\wwwroot\pss\cncona\admin\index.php6:ok
-2018.01.02.09:17:33:D:\wwwroot\pss\cncona\admin\index.php6:ok
-2018.01.02.09:17:46:D:\wwwroot\pss\cncona\admin\index.php6:ok
-2018.01.02.09:17:56:D:\wwwroot\pss\cncona\admin\index.php6:ok
-2018.01.02.09:18:28:D:\wwwroot\pss\cncona\admin\index.php6:ok
-2018.01.02.09:21:59:D:\wwwroot\pss\cncona\admin\index.php6:ok
-2018.01.02.09:23:30:D:\wwwroot\pss\cncona\admin\index.php6:ok
-2018.01.02.09:23:39:D:\wwwroot\pss\cncona\admin\index.php6:ok
-2018.01.02.09:23:46:D:\wwwroot\pss\cncona\admin\index.php6:ok
-2018.01.02.09:23:49:D:\wwwroot\pss\cncona\admin\index.php6:ok
-2018.01.02.09:23:51:D:\wwwroot\pss\cncona\admin\index.php6:ok
-2018.01.02.09:23:52:D:\wwwroot\pss\cncona\admin\index.php6:ok
-2018.01.02.09:24:07:D:\wwwroot\pss\cncona\admin\index.php6:ok
-2018.01.02.09:24:46:D:\wwwroot\pss\cncona\admin\index.php6:ok
-2018.01.03.11:04:38:D:\wwwroot\pss\cncona\admin\upload.class.php128:C:\Windows\Temp\phpD98.tmp
-2018.01.03.11:04:38:D:\wwwroot\pss\cncona\admin\upload.class.php129:../files/de06059f2355fec3b2962e8b40373863.jpg
-2018.01.03.11:06:20:D:\wwwroot\pss\cncona\admin\ajax_request.php304:is array: {12: {product: 12,price: 0.00,amount: 2,type: ,caigou: 6}14: {product: 14,price: 1234.00,amount: 2,type: ,caigou: 7}}
+2018.01.19.13:31:26:D:\xampp\htdocs\pss_system\admin\ajax_request.php359:{"order_detail_id":"3","order_id":"2","product":"6","amount":"1","product_name":"\u6dcb\u6d74\u9ad8\u6746","product_sn":"CNA2950","price":"1360.00","unit":"\u5957","status":"0"}
+2018.01.19.14:17:03:D:\xampp\htdocs\pss_system\admin\ajax_request.php370:{"order_detail_id":"3","order_id":"2","product":"6","amount":"1","product_name":"\u6dcb\u6d74\u9ad8\u6746","product_sn":"CNA2950","price":"1360.00","unit":"\u5957","status":"0"}
+2018.01.19.14:51:15:D:\xampp\htdocs\pss_system\admin\ajax_request.php382:{"order_detail_id":"8","order_id":"4","product":"11","amount":"3","product_name":"\u667a\u80fd\u9a6c\u6876","product_sn":"CN006-08","price":"4880.00","unit":"\u4e2a","status":"0"}
+2018.01.19.14:51:16:D:\xampp\htdocs\pss_system\admin\ajax_request.php382:{"order_detail_id":"9","order_id":"4","product":"72","amount":"1","product_name":"\u83dc\u76c6\u9f99\u5934","product_sn":"CNBS07-17","price":"280.00","unit":"\u4e2a","status":"0"}
+2018.01.19.14:51:16:D:\xampp\htdocs\pss_system\admin\ajax_request.php382:{"order_detail_id":"10","order_id":"4","product":"84","amount":"1","product_name":"\u6dcb\u6d74\u9ad8\u6746","product_sn":"CN180007PA-01","price":"1360.00","unit":"\u4e2a","status":"0"}
+2018.01.19.14:51:17:D:\xampp\htdocs\pss_system\admin\ajax_request.php382:{"order_detail_id":"11","order_id":"4","product":"101","amount":"1","product_name":"\u4eae\u5149\u516d\u4ef6\u5957","product_sn":"CN7048-11","price":"580.00","unit":"\u4e2a","status":"0"}
+2018.01.19.15:02:05:D:\xampp\htdocs\pss_system\admin\ajax_request.php388:{"order_detail_id":"15","order_id":"5","product":"8","amount":"1","product_name":"\u8e72\u4fbf\u5668","product_sn":"CN055S-01","price":"260.00","unit":"\u4e2a","status":"0"}
+2018.01.19.15:02:05:D:\xampp\htdocs\pss_system\admin\ajax_request.php388:{"order_detail_id":"16","order_id":"5","product":"9","amount":"1","product_name":"\u8e72\u4fbf\u5668","product_sn":"CN058S-02","price":"280.00","unit":"\u4e2a","status":"0"}
+2018.01.19.15:05:16:D:\xampp\htdocs\pss_system\admin\ajax_request.php388:{"order_detail_id":"12","order_id":"4","product":"110","amount":"1","product_name":"\u7eb8\u5dfe\u76d2","product_sn":"CN179-13","price":"40.00","unit":"\u4e2a","status":"0"}
+2018.01.19.15:05:16:D:\xampp\htdocs\pss_system\admin\ajax_request.php388:{"order_detail_id":"13","order_id":"4","product":"123","amount":"1","product_name":"","product_sn":"CN1038","price":"199.00","unit":"\u4e2a","status":"0"}
+2018.01.19.15:05:17:D:\xampp\htdocs\pss_system\admin\ajax_request.php388:{"order_detail_id":"14","order_id":"4","product":"124","amount":"1","product_name":"","product_sn":"\u7231\u6d6a","price":"588.00","unit":"\u4e2a","status":"0"}
+2018.01.21.09:04:33:D:\xampp\htdocs\pss_system\admin\ajax_request.php159:is array: {12: {product: 12,amount: 6,purchase: 7,create_time_unix: 1514908800}14: {product: 14,amount: 6,purchase: 7,create_time_unix: 1514908800}}
+2018.01.21.10:17:41:D:\xampp\htdocs\pss_system\admin\ajax_request.php205:is array: {customer: 2,total_price: 3980,remark: 测试,discount: 0,delivery: 2018-01-31 00:00:00,detail: {6: {product: 6,price: 1980.00,amount: 1}7: {product: 7,price: 2000.00,amount: 1}}order_time: 2017-12-28 00:00:00}
+2018.01.21.10:17:41:D:\xampp\htdocs\pss_system\admin\ajax_request.php257:{"customer":"2","total_price":"3980","remark":"\u6d4b\u8bd5","discount":"0","delivery":"2018-01-31 00:00:00","detail":{"6":{"product":"6","price":"1980.00","amount":"1"},"7":{"product":"7","price":"2000.00","amount":"1"}},"order_time":"2017-12-28 00:00:00"}
+2018.01.21.10:19:13:D:\xampp\htdocs\pss_system\admin\ajax_request.php397:{"order_detail_id":"17","order_id":"6","product":"6","amount":"1","product_name":"\u8fde\u4f53\u67f1\u76c6","product_sn":"CN021-01","price":"1980.00","unit":"\u4e2a","status":"0"}
+2018.01.21.10:19:14:D:\xampp\htdocs\pss_system\admin\ajax_request.php397:{"order_detail_id":"18","order_id":"6","product":"7","amount":"1","product_name":"\u8fde\u4f53\u67f1\u76c6","product_sn":"CN022-01","price":"2000.00","unit":"\u4e2a","status":"0"}

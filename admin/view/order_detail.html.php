@@ -58,7 +58,7 @@
         </tr>
         </tbody>
         <tfoot>
-            <tr><td colspan="5"><button class="button print">打印销售单</button></td> </tr>
+            <tr><td colspan="5"><button class="button print">打印销售单</button><button class="button delete">删除销售单</button></td> </tr>
         </tfoot>
 
     </table>
@@ -83,6 +83,17 @@
             ajaxPost('order_print',{id:orderId},function(back){
                 $(back).jqprint({debug: false,importCSS:true});
             });
+        });
+        $(document).on('click','.delete',function(){
+            if(confirm('确定要删除此销售单？')){
+                ajaxPost('order_delete',{order_id:orderId},function(back){
+                   var backValue=backHandle(back);
+                    if(backValue){
+                        var href=getHref('order_list');
+                        location.href=href;
+                    }
+                });
+            }
         });
     }
     function getOrderDetail(orderId){
