@@ -11,14 +11,27 @@
         width: 60px;
         min-width: 30px;
     }
-    .img {
+    /*.img {*/
+        /*width: 60px;*/
+        /*height: auto;*/
+    /*}*/
+    .search-input {
+        width: 100px;
+        min-width: 30px;
+    }
+
+    .search-button {
         width: 60px;
+        min-width: 30px;
+    }
+    img {
+        width:40px;
         height: auto;
     }
 </style>
 <div class="block">
     <div class="head">
-        进货列表
+        入库列表
     </div>
     <table class="table sheet pre-purchase-table" style="display: none">
         <thead>
@@ -43,39 +56,92 @@
     </table>
 
     <div class="space"></div>
-    <div class="head">
-        待选列表
+<!--    <div class="head">-->
+<!--        待选列表-->
+<!--    </div>-->
+    <div>
+        <button class="button show-product-list">添加产品</button>
     </div>
-    <table class="table">
-        <tr>
-            <td>选择类别：</td><td class="category-filter"><select class="category-template category-select"><option class="option-template"></option></select></td>
-            <td>按名称搜索:</td><td><input class="name-search-text search-input" type="text" placeholder="输入名称" maxlengtd="10"><button class="button search-button button-after-input" data-type="search-name" id="sch1">搜索</button></td>
-            <td>按序列号搜索:</td><td><input class="sn-search-text search-input" type="text" placeholder="输入序列号" maxlengtd="10"><button class="button search-button button-after-input" data-type="search-sn" id="sch1">搜索</button></td>
-        </tr>
-    </table>
-    <table class="table sheet prepare-table" style="display: none">
-        <tr>
-            <td>主图</td>
-            <td>名称</td>
-            <td>序列号</td>
-            <td>库存</td>
-            <td>操作</td>
-
-        </tr>
-        <tr class="prepare-tr-template">
-            <td><img class="img" alt="主图"></td>
-            <td class="content" data-field="name"></td>
-            <td class="content" data-field="sn"></td>
-            <td class="content" data-field="stock"></td>
-            <td>
-                <button class="button add" data-type="add">添加</button>
-            </td>
-        </tr>
-    </table>
+<!--    <table class="table">-->
+<!--        <tr>-->
+<!--            <td>选择类别：</td><td class="category-filter"><select class="category-template category-select"><option class="option-template"></option></select></td>-->
+<!--            <td>按名称搜索:</td><td><input class="name-search-text search-input" type="text" placeholder="输入名称" maxlengtd="10"><button class="button search-button button-after-input" data-type="search-name" id="sch1">搜索</button></td>-->
+<!--            <td>按序列号搜索:</td><td><input class="sn-search-text search-input" type="text" placeholder="输入序列号" maxlengtd="10"><button class="button search-button button-after-input" data-type="search-sn" id="sch1">搜索</button></td>-->
+<!--        </tr>-->
+<!--    </table>-->
+<!--    <table class="table sheet prepare-table" style="display: none">-->
+<!--        <tr>-->
+<!--            <td>主图</td>-->
+<!--            <td>名称</td>-->
+<!--            <td>序列号</td>-->
+<!--            <td>库存</td>-->
+<!--            <td>操作</td>-->
+<!---->
+<!--        </tr>-->
+<!--        <tr class="prepare-tr-template">-->
+<!--            <td><img class="img" alt="主图"></td>-->
+<!--            <td class="content" data-field="name"></td>-->
+<!--            <td class="content" data-field="sn"></td>-->
+<!--            <td class="content" data-field="stock"></td>-->
+<!--            <td>-->
+<!--                <button class="button add" data-type="add">添加</button>-->
+<!--            </td>-->
+<!--        </tr>-->
+<!--    </table>-->
 
 </div>
 <div class="big-img-container"><img class="big-img"></div>
 <script type="application/javascript" src="js/tableController.js"></script>
+
+<div class="pop-up" style="display: none">
+    <div class="table-container">
+        <div class="pop-up-head">
+            待选列表
+        </div>
+        <table class="table">
+            <tr>
+                <td>选择类别：</td>
+                <td colspan="3" class="category-filter"><select class="category-template category-select">
+                        <option class="option-template"></option>
+                    </select></td>
+            </tr>
+            <tr>
+                <td>按名称搜索:</td>
+                <td><input class="name-search-text search-input" type="text" placeholder="输入名称" maxlengtd="10">
+                    <button class="button search-button" data-type="search-name" id="sch1">搜索</button>
+                </td>
+                <td>按序列号搜索:</td>
+                <td><input class="sn-search-text search-input" type="text" placeholder="输入序列号" maxlengtd="10">
+                    <button class="button search-button" data-type="search-sn" id="sch1">搜索</button>
+                </td>
+            </tr>
+        </table>
+        <table class="table sheet prepare-table" style="display: none">
+            <tr>
+                <td>图片</td>
+                <td>名称</td>
+                <td>型号</td>
+                <td>库存</td>
+                <td>操作</td>
+
+            </tr>
+            <tr class="prepare-tr-template">
+                <td><img class="img" alt="图片"></td>
+                <td class="content" data-field="name"></td>
+                <td class="content" data-field="sn"></td>
+                <td class="content" data-field="stock"></td>
+                <td>
+                    <button class="button add" data-type="add">添加</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="button-container">
+        <button class="button" data-type="close-popup">关闭</button>
+    </div>
+
+</div>
+
 
 <script>
     var categoryList,prePurchaseObj,prepareList;
@@ -151,6 +217,9 @@
                     });
                     submitPurchase();
                     break;
+                case 'close-popup':
+                    $('.pop-up').hide();
+                    break;
                 default :
                     break;
             }
@@ -188,10 +257,13 @@
             var src=$(this).attr('src');
             $('.big-img').attr('src',src);
             $('.big-img-container').show();
-        })
+        });
         $(document).on('click','.big-img',function(){
             $('.big-img-container').hide();
-        })
+        });
+        $(document).on('click', '.show-product-list', function () {
+            $('.pop-up').show();
+        });
     }
 
     function initCategory(){
